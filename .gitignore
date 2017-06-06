@@ -12,3 +12,4 @@ profiles.clj
 /log
 figwheel_server.log
 .idea/workspace.xml
+/node_modules
