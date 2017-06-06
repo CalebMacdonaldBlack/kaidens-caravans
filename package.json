@@ -1,5 +1,5 @@
 {
-  "name": "Kaidens Caravans",
+  "name": "kaidens_caravans",
   "version": "1.0.0",
   "description": "CMS for online caravan sales and advertising",
   "main": "gulpfile.js",
