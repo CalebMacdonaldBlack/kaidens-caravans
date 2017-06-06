@@ -1,0 +1,35 @@
+{
+  "name": "Kaidens Caravans",
+  "version": "1.0.0",
+  "description": "CMS for online caravan sales and advertising",
+  "main": "gulpfile.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/CalebMacdonaldBlack/kaidens-caravans.git"
+  },
+  "keywords": [
+    "WPS"
+  ],
+  "author": "Caleb MacDonald Black",
+  "license": "UNLICENSED",
+  "bugs": {
+    "url": "https://github.com/CalebMacdonaldBlack/kaidens-caravans/issues"
+  },
+  "homepage": "https://github.com/CalebMacdonaldBlack/kaidens-caravans",
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-autoprefixer": "^3.1.1",
+    "gulp-less": "^3.3.0",
+    "gulp-minify-css": "^1.2.4",
+    "gulp-notify": "^3.0.0",
+    "gulp-plumber": "^1.1.0",
+    "gulp-util": "^3.0.8",
+    "gulp-watch-less": "^1.0.1"
+  }
+}
