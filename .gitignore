@@ -14,3 +14,4 @@ figwheel_server.log
 .idea/workspace.xml
 /node_modules
 resources/public/css/bare.css
+.idea/misc.xml
