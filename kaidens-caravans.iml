@@ -20,6 +20,7 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="library" name="kaidens-caravans node_modules" level="project" />
     <orderEntry type="library" name="Leiningen: args4j:2.33" level="project" />
     <orderEntry type="library" name="Leiningen: binaryage/devtools:0.9.4" level="project" />
     <orderEntry type="library" name="Leiningen: binaryage/env-config:0.2.0" level="project" />
