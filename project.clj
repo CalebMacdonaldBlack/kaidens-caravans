@@ -6,6 +6,8 @@
   :dependencies [[clj-time "0.13.0"]
                  [cljs-ajax "0.6.0"]
                  [compojure "1.6.0"]
+                 [com.lucasbradstreet/cljs-uuid-utils "1.0.2"]
+                 [com.rpl/specter "1.0.1"]
                  [conman "0.6.4"]
                  [cprop "0.1.10"]
                  [funcool/struct "1.0.0"]
@@ -14,10 +16,11 @@
                  [luminus-nrepl "0.1.4"]
                  [luminus/ring-ttl-session "0.3.2"]
                  [markdown-clj "0.9.99"]
+                 [metosin/compojure-api "1.1.10"]
                  [metosin/muuntaja "0.2.1"]
                  [metosin/ring-http-response "0.9.0"]
                  [mount "0.1.11"]
-                 [org.clojure/clojure "1.8.0"]
+                 [org.clojure/clojure "1.9.0-alpha14"]
                  [org.clojure/clojurescript "1.9.562" :scope "provided"]
                  [org.clojure/tools.cli "0.3.5"]
                  [org.clojure/tools.logging "0.3.1"]
@@ -126,8 +129,8 @@
                      {:output-to "target/test.js"
                       :main "kaidens-caravans.doo-runner"
                       :optimizations :whitespace
-                      :pretty-print true}}}}
+                      :pretty-print true}}}}}
                   
-                  }
+
    :profiles/dev {}
    :profiles/test {}})
