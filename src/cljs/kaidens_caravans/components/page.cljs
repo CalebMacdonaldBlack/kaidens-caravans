@@ -6,7 +6,7 @@
 (def pages
   {:home #'home-page})
 
-(defn page []
+(defn page-base []
   [:div
    [nav]
    [(pages @(rf/subscribe [:page]))]])

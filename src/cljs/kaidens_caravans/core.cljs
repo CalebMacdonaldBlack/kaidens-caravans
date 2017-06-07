@@ -6,6 +6,7 @@
             [markdown.core :refer [md->html]]
             [ajax.core :refer [GET POST]]
             [kaidens-caravans.ajax :refer [load-interceptors!]]
+            [kaidens-caravans.components.page :refer [page-base]]
             [kaidens-caravans.handlers]
             [kaidens-caravans.subscriptions]
             [secretary.core :as secretary])
@@ -31,7 +32,7 @@
 
 (defn mount-components []
   (rf/clear-subscription-cache!)
-  (r/render [#'page] (.getElementById js/document "app")))
+  (r/render [#'kaidens-caravans.components.page/page-base] (.getElementById js/document "app")))
 
 (defn init! []
   (rf/dispatch-sync [:initialize-db])
