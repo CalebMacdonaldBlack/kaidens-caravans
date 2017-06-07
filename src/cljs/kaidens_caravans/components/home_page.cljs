@@ -6,4 +6,4 @@
   (rf/dispatch [:set-active-page :home]))
 
 (defn home-page []
-  [:h1 "Home Page"])
+  [:section>h1 "Home Page"])
