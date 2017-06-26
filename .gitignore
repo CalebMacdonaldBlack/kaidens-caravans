@@ -18,3 +18,4 @@ resources/public/css/bare.css
 .idea/libraries/
 .idea/modules.xml
 kaidens-caravans.iml
+package-lock.json

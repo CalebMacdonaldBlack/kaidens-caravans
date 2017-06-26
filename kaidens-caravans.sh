@@ -17,6 +17,8 @@ ${txtbld}DESCRIPTION${txtrst}
 	   Builds and runs the backend application
     ${txtbld}figwheel${txtrst}
        Builds and runs figwheel
+    ${txtbld}install${txtrst}
+      install dependencies such as npm packages
 EOF
 exit 1
 }
@@ -37,11 +39,18 @@ figwheel() {
     lein figwheel
 }
 
+install() {
+    echo_message 'installing npm packages'
+    npm install
+}
+
 parse () {
 	if [[ $# -eq 0 ]]; then
 		usage
     elif [ $1 = "run" ]; then
 	    run
+    elif [ $1 = "install" ]; then
+	    install
     elif [ $1 = "figwheel" ]; then
         figwheel
 	else
