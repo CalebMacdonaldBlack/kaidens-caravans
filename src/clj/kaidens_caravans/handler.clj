@@ -1,7 +1,7 @@
 (ns kaidens-caravans.handler
   (:require [compojure.core :refer [routes wrap-routes]]
             [kaidens-caravans.layout :refer [error-page]]
-            [kaidens-caravans.routes.home :refer [home-routes]]
+            [kaidens-caravans.routes.core :refer [my-routes]]
             [compojure.route :as route]
             [kaidens-caravans.env :refer [defaults]]
             [mount.core :as mount]
@@ -13,7 +13,7 @@
 
 (def app-routes
   (routes
-    (-> #'home-routes
+    (-> #'my-routes
         (wrap-routes middleware/wrap-csrf)
         (wrap-routes middleware/wrap-formats))
     (route/not-found
