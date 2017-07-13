@@ -21,7 +21,7 @@
 
   (testing "Update caravans route"
     (with-redefs [caravans/update! (constantly (response/ok {:caravans-update! "called"}))]
-      (let [{:keys [status body]} ((app) (json-request :put "/caravans" nil))]
+      (let [{:keys [status body]} ((app) (json-request :put "/caravans/12341234" nil))]
         (is (= status 200))
         (is (= {:caravans-update! "called"} (parse-body body))))))
 
