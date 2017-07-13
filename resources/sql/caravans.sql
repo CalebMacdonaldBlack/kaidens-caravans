@@ -25,7 +25,7 @@ SET
   videos = :videos
 WHERE id = :id::UUID;
 
--- :name delete-caravan :! :n
+-- :name delete-caravan! :! :n
 -- :doc delete a caravan record given the id
 UPDATE caravans
 SET archived = TRUE
