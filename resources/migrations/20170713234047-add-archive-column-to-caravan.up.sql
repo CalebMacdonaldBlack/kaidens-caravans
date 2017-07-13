@@ -1,0 +1,1 @@
+ALTER TABLE caravans ADD COLUMN archived BOOLEAN;
