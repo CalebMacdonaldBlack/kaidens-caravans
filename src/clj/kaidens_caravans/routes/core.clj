@@ -10,8 +10,11 @@
 
 (defapi my-routes
   (GET "/" [] (content-type (ok (home-page)) "text/html; charset=utf-8"))
+
   (context "/manager" []
     (GET "/" [] (manager-page)))
+
   (context "/caravans" []
     (POST "/" {:as request} (caravans/create! request))
-    (GET "/" {:as request} (caravans/retrieve))))
+    (GET "/" {:as request} (caravans/retrieve))
+    (PUT "/" {:as request} (caravans/update! request))))
