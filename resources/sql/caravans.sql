@@ -6,4 +6,4 @@ VALUES (:type, :make, :model, :price, :year, :feet, :tonne, :features, :photos, 
 
 -- :name retrieve-caravans :? :*
 -- :doc retrieves caravans
-SELECT * FROM caravans
+SELECT * FROM caravans;
