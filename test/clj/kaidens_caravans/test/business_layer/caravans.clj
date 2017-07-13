@@ -9,10 +9,13 @@
     (is (= expected caravan))
     return-value))
 
+(def mock-update-caravan mock-create-caravan)
+
 (def mock-caravan {:id "69fc8418-74ed-421b-bcf3-c237f1901d8e"
                    :type "Caravan"
                    :make "Road Star"
                    :model "Offroad"
+                   :price 40000
                    :year 1998
                    :feet 21
                    :tonne 2.5
@@ -31,4 +34,10 @@
     (with-redefs [retrieve-caravans (constantly [mock-caravan])]
       (let [{:keys [status body]} (retrieve)]
         (is (= status 200))
-        (is (= [mock-caravan] body))))))
+        (is (= [mock-caravan] body)))))
+
+  (testing "update-caravans"
+    (with-redefs [update-caravan! (mock-update-caravan mock-caravan 1)]
+      (let [{:keys [status body]} (update! {:body-params mock-caravan})]
+        (is (= status 200))
+        (is (= {:rows-affected 1} body))))))

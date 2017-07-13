@@ -8,3 +8,7 @@
 
 (defn retrieve []
   (response/ok (retrieve-caravans)))
+
+(defn update!
+  [{:keys [body-params]}]
+  (response/ok {:rows-affected (update-caravan! body-params)}))
