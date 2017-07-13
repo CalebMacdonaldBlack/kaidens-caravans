@@ -30,3 +30,4 @@ package-lock.json
 .idea/uiDesigner.xml
 .idea/vcs.xml
 .envrc
+/out
