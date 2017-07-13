@@ -9,7 +9,7 @@ VALUES (:type, :make, :model, :price, :year, :feet, :tonne, :features, :photos, 
 SELECT *
 FROM caravans;
 
--- :name update-caravans! :! :n
+-- :name update-caravan! :! :n
 -- :doc update an existing caravan record
 UPDATE caravans
 SET
