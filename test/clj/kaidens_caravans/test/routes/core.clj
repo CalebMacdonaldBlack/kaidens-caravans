@@ -27,9 +27,9 @@
 
   (testing "Delete caravan route"
     (let [id "12341234"]
-      (with-redefs [caravans/delete! #(fn [route-params]
-                                        (is (= id (:id route-params)))
+      (with-redefs [caravans/delete! (fn [req]
+                                        (is (= id (get-in req [:route-params :id])))
                                         (response/ok {:caravans-delete! "called"}))]
-        (let [{:keys [status body]} ((app) (request :get "/caravans/12341234" nil))]
+        (let [{:keys [status body]} ((app) (request :delete (str "/caravans/" id) nil))]
           (is (= status 200))
           (is (= {:caravans-delete! "called"} (parse-body body))))))))
