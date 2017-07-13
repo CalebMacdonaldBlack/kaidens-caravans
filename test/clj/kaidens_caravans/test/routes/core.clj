@@ -23,4 +23,13 @@
     (with-redefs [caravans/update! (constantly (response/ok {:caravans-update! "called"}))]
       (let [{:keys [status body]} ((app) (json-request :put "/caravans" nil))]
         (is (= status 200))
-        (is (= {:caravans-update! "called"} (parse-body body)))))))
+        (is (= {:caravans-update! "called"} (parse-body body))))))
+
+  (testing "Delete caravan route"
+    (let [id "12341234"]
+      (with-redefs [caravans/delete! #(fn [route-params]
+                                        (is (= id (:id route-params)))
+                                        (response/ok {:caravans-delete! "called"}))]
+        (let [{:keys [status body]} ((app) (request :get "/caravans/12341234" nil))]
+          (is (= status 200))
+          (is (= {:caravans-delete! "called"} (parse-body body))))))))
