@@ -31,4 +31,10 @@
     (with-redefs [retrieve-caravans (constantly [mock-caravan])]
       (let [{:keys [status body]} (retrieve)]
         (is (= status 200))
-        (is (= [mock-caravan] body))))))
+        (is (= [mock-caravan] body)))))
+
+  (testing "update-caravans"
+    (with-redefs [update-caravan! (mock-update-caravans mock-caravan 1)]
+      (let [{:keys [status body]} (create! {:body-params mock-caravan})]
+        (is (= status 200))
+        (is (= {:rows-affected 1} body))))))
