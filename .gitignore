@@ -29,3 +29,4 @@ package-lock.json
 .idea/sqldialects.xml
 .idea/uiDesigner.xml
 .idea/vcs.xml
+.envrc
