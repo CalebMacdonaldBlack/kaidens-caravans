@@ -4,12 +4,11 @@
               [kaidens-caravans.db.core :refer :all]
               [kaidens-caravans.test.util :refer :all]))
 
-(defn mock-create-caravan [expected return-value]
+(defn mock-db [expected return-value]
   (fn [caravan]
     (is (= expected caravan))
     return-value))
 
-(def mock-update-caravan mock-create-caravan)
 
 (def mock-caravan {:id "69fc8418-74ed-421b-bcf3-c237f1901d8e"
                    :type "Caravan"
@@ -25,7 +24,7 @@
 
 (deftest test-caravans
   (testing "create-caravan"
-    (with-redefs [create-caravan! (mock-create-caravan mock-caravan 1)]
+    (with-redefs [create-caravan! (mock-db mock-caravan 1)]
       (let [{:keys [status body]} (create! {:body-params mock-caravan})]
         (is (= status 200))
         (is (= {:rows-affected 1} body)))))
@@ -37,14 +36,14 @@
         (is (= [mock-caravan] body)))))
 
   (testing "update-caravans"
-    (with-redefs [update-caravan! (mock-update-caravan mock-caravan 1)]
+    (with-redefs [update-caravan! (mock-db mock-caravan 1)]
       (let [{:keys [status body]} (update! {:body-params mock-caravan})]
         (is (= status 200))
         (is (= {:rows-affected 1} body)))))
 
   (testing "delete-caravan"
-    (let [id {:id "69fc8418-74ed-421b-bcf3-c237f1901d8e"}])
-    (with-redefs [delete-caravan! (mock-delete-caravan id 1)]
-      (let [{:keys [status body]} (delete! {:route-params id})]
-        (is (= status 200))
-        (is (= {:rows-affected 1} body))))))
+    (let [id {:id "69fc8418-74ed-421b-bcf3-c237f1901d8e"}]
+      (with-redefs [delete-caravan! (mock-db id 1)]
+        (let [{:keys [status body]} (delete! {:route-params id})]
+          (is (= status 200))
+          (is (= {:rows-affected 1} body)))))))
