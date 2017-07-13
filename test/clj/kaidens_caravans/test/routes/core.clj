@@ -15,6 +15,6 @@
 
   (testing "Retrieve caravans route"
     (with-redefs [caravans/retrieve (constantly (response/ok {:caravans-retrieve "called"}))]
-      (let [{:keys [status body]} ((app) (json-request :get "/caravans" nil))]
+      (let [{:keys [status body]} ((app) (request :get "/caravans" nil))]
         (is (= status 200))
         (is (= {:caravans-retrieve "called"} (parse-body body)))))))
