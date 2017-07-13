@@ -13,4 +13,5 @@
   (context "/manager" []
     (GET "/" [] (manager-page)))
   (context "/caravans" []
-    (POST "/" {:as request} (caravans/create! request))))
+    (POST "/" {:as request} (caravans/create! request))
+    (GET "/" {:as request} (caravans/retrieve))))
