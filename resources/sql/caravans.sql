@@ -10,7 +10,7 @@ SELECT *
 FROM caravans;
 
 -- :name update-caravan! :! :n
--- :doc update an existing caravan record
+-- :doc update an existing caravan record give the id
 UPDATE caravans
 SET
   type = :type,
@@ -24,3 +24,9 @@ SET
   photos = :photos,
   videos = :videos
 WHERE id = :id::UUID;
+
+-- :name delete-caravan :! :n
+-- :doc delete a caravan record given the id
+UPDATE caravans
+SET archived = TRUE
+WHERE id = :id;
