@@ -26,7 +26,7 @@
 
 (defn- convert-string-keys [params]
   (->> params
-       (map #(replace-ddash-slash %))
+       (map replace-ddash-slash)
        (into {})
        keywordize-keys))
 
