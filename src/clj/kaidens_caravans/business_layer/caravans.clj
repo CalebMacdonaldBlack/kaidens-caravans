@@ -12,3 +12,7 @@
 (defn update!
   [{:keys [body-params]}]
   (response/ok {:rows-affected (update-caravan! body-params)}))
+
+(defn delete!
+  [{:keys [route-params]}]
+  (response/ok {:rows-affected (delete-caravan! route-params)}))
