@@ -23,4 +23,4 @@ SET
   features = :features,
   photos = :photos,
   videos = :videos
-WHERE id = :id;
+WHERE id = :id::UUID;
