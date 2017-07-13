@@ -40,4 +40,11 @@
     (with-redefs [update-caravan! (mock-update-caravan mock-caravan 1)]
       (let [{:keys [status body]} (update! {:body-params mock-caravan})]
         (is (= status 200))
+        (is (= {:rows-affected 1} body)))))
+
+  (testing "delete-caravan"
+    (let [id {:id "69fc8418-74ed-421b-bcf3-c237f1901d8e"}])
+    (with-redefs [delete-caravan! (mock-delete-caravan id 1)]
+      (let [{:keys [status body]} (delete! {:route-params id})]
+        (is (= status 200))
         (is (= {:rows-affected 1} body))))))
