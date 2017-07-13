@@ -29,4 +29,4 @@ WHERE id = :id::UUID;
 -- :doc delete a caravan record given the id
 UPDATE caravans
 SET archived = TRUE
-WHERE id = :id;
+WHERE id = :id::UUID;
