@@ -1,0 +1,8 @@
+ALTER TABLE caravans ADD COLUMN axels TEXT;
+ALTER TABLE caravans ADD COLUMN terrain TEXT;
+ALTER TABLE caravans ADD COLUMN bed TEXT;
+ALTER TABLE caravans ADD COLUMN fridge TEXT;
+ALTER TABLE caravans ADD COLUMN frame TEXT;
+ALTER TABLE caravans ADD COLUMN suspention TEXT;
+ALTER TABLE caravans ADD COLUMN condition TEXT;
+ALTER TABLE caravans ADD COLUMN vin TEXT;
