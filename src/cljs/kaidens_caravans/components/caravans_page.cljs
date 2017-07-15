@@ -5,5 +5,17 @@
 (secretary/defroute "/caravans" []
                     (rf/dispatch [:set-active-page :caravans]))
 
+(defn create-caravan []
+  [:div
+   [:grid
+    [:div {:local "1/2"}
+     [:label "Make: "]
+     [:input {:type "text" :placeholder "Make"}]]
+    [:div {:local "1/2"}
+     [:label "Make: "]
+     [:input {:type "text" :placeholder "Make"}]]]])
+
 (defn caravans-page []
-  [:section>h1 "Caravans Page"])
+  [:section
+   [:h1 "Caravans"]
+   [create-caravan]])

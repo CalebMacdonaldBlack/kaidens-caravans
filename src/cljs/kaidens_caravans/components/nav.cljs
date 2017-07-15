@@ -3,9 +3,10 @@
             [accountant.core :as accountant]))
 
 (defn nav []
-  [:nav>label
-   [:input {:type "checkbox"}]
-   [:header>a "Kaidens " [:strong "Caravans"]]
-   [:ul
-    [:li>a {:on-click #(accountant/navigate! "#/")} "Home"]
-    [:li>a {:on-click #(accountant/navigate! "#/caravans")} "Caravans"]]])
+  [:nav.navbar.navbar-inverse
+   [:div.container-fluid
+    [:div.navbar-header
+     [:a.navbar-brand {:on-click #(accountant/navigate! "#/")} "Manager"]]
+    [:ul.nav.navbar-nav
+     [:li>a {:on-click #(accountant/navigate! "#/")} "Home"]
+     [:li>a {:on-click #(accountant/navigate! "#/caravans")} "Caravans"]]]])
