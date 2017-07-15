@@ -6,6 +6,7 @@
   :dependencies [[clj-time "0.13.0"]
                  [cljs-ajax "0.6.0"]
                  [compojure "1.6.0"]
+                 [venantius/accountant "0.1.7"]
                  [com.lucasbradstreet/cljs-uuid-utils "1.0.2"]
                  [com.rpl/specter "1.0.1"]
                  [conman "0.6.4"]
