@@ -18,7 +18,7 @@
 (reg-event-fx
   :clear-current-caravan
   (fn [{:keys [db]} _]
-    ;(reset! (:current-caravan db) {})
+    (reset! (:current-caravan db) {})
     {}))
 
 (reg-event-fx
