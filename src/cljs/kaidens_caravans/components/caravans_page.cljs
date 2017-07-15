@@ -13,33 +13,32 @@
                          :on-change #(swap! ratom assoc key (.-target.value %))
                          :value (key @ratom)}]])
 
-(defn create-caravan []
-  (let [caravan (r/atom {})]
-    [:div.row.well
-     [:h2.col-md-12 "Add New Caravan"]
-     [:div.col-md-12
-      [:br]]
-     [form-input "Make" :make 3 "text" caravan]
-     [form-input "Model" :model 3 "text" caravan]
-     [form-input "Type" :type 2 "text" caravan]
-     [form-input "VIN Number" :vin 2 "text" caravan]
-     [form-input "Frame" :frame 2 "text" caravan]
-     [form-input "Terrain" :terrain 2 "text" caravan]
-     [form-input "Length (feet)" :length 2 "number" caravan]
-     [form-input "Weight (Tonne)" :weight 2 "number" caravan]
-     [form-input "Year" :year 2 "number" caravan]
-     [form-input "Axles" :axles 2 "text" caravan]
-     [form-input "Condition" :condition 2 "text" caravan]
-     [form-input "Bed" :bed 2 "text" caravan]
-     [form-input "Fridge" :fridge 2 "text" caravan]
-     [form-input "Suspension" :suspension 2 "text" caravan]
-     [form-input "price" :price 2 "number" caravan]
-     [:div.col-md-12
-      [:br]
-      [:button.btn.btn-success {:type "button"} "Add Caravan"]]]))
-
+(defn modify-caravan-form [caravan]
+  [:div.row
+   [form-input "Make" :make 3 "text" caravan]
+   [form-input "Model" :model 3 "text" caravan]
+   [form-input "Type" :type 2 "text" caravan]
+   [form-input "VIN Number" :vin 2 "text" caravan]
+   [form-input "Frame" :frame 2 "text" caravan]
+   [form-input "Terrain" :terrain 2 "text" caravan]
+   [form-input "Length (feet)" :length 2 "number" caravan]
+   [form-input "Weight (Tonne)" :weight 2 "number" caravan]
+   [form-input "Year" :year 2 "number" caravan]
+   [form-input "Axles" :axles 2 "text" caravan]
+   [form-input "Condition" :condition 2 "text" caravan]
+   [form-input "Bed" :bed 2 "text" caravan]
+   [form-input "Fridge" :fridge 2 "text" caravan]
+   [form-input "Suspension" :suspension 2 "text" caravan]
+   [form-input "price" :price 2 "number" caravan]])
 
 (defn caravans-page []
-  [:div.container
-   [:h1 "Caravans"]
-   [create-caravan]])
+  (let [caravan @(rf/subscribe [:current-caravan])]
+    [:div.container
+     [:h1 "Caravans"]
+     [:div.well
+      [:h2 "New Caravan"]
+      [:br]
+      [modify-caravan-form caravan]
+      [:br]
+      [:button.btn.btn-success {:type "button" :on-click (rf/dispatch [:create-caravan @caravan])} "New Caravan"]]]))
+

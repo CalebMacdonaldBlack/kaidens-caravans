@@ -11,3 +11,7 @@
   (fn [db _]
     (:docs db)))
 
+(reg-sub
+  :current-caravan
+  (fn [db _]
+    (:current-caravan db)))
