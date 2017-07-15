@@ -35,9 +35,6 @@
 
 (secretary/set-config! :prefix "#")
 
-(secretary/defroute "/" []
-                    (rf/dispatch [:set-active-page :home]))
-
 ;; -------------------------
 ;; Initialize app
 
