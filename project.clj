@@ -130,7 +130,7 @@
                     {:source-paths ["src/cljc" "src/cljs" "test/cljs"]
                      :compiler
                      {:output-to "target/test.js"
-                      :main "kaidens-caravans.doo-runner"
+                      :main "kaidens-caravans.test.doo-runner"
                       :optimizations :whitespace
                       :pretty-print true}}}}}
                   
