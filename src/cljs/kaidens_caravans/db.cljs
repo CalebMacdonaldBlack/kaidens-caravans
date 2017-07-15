@@ -1,4 +1,5 @@
 (ns kaidens-caravans.db)
 
 (def default-db
-  {:page :home})
+  {:page :home
+   :ttest "ball"})

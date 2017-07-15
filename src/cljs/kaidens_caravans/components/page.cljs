@@ -4,12 +4,12 @@
             [kaidens-caravans.components.caravans-page :refer [caravans-page]]
             [re-frame.core :as rf]))
 
-(def pages
+(defn pages []
   {:home #'home-page
    :caravans #'caravans-page})
 
 (defn page-base []
   [:div
    [nav]
-   [:div ((@(rf/subscribe [:page]) pages))]])
+   [((pages) @(rf/subscribe [:page]))]])
 
