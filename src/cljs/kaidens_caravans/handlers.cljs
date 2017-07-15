@@ -47,24 +47,3 @@
     (post-json {:url "/caravans"
                 :body caravan
                 :after-success (rf/dispatch [:clear-current-caravan])})))
-
-
-    ;(ajax/ajax-request
-    ;  {:uri "/caravans"
-    ;   :method :post
-    ;   :params {:message "hello world"
-    ;            :user "bob"}
-    ;   :handler #(cljs.pprint/pprint %)
-    ;   :format (ajax/json-request-format)
-    ;   :response-format (ajax/json-response-format {:keywords? true})})
-    ;{}))
-
-    ;{:http-xhrio {:method          :post
-    ;              :uri             "/caravans"
-    ;              :params          caravan
-    ;              :timeout         5000
-    ;              :format          (ajax/json-request-format)
-    ;              :response-format (ajax/json-response-format {:keywords? true})
-    ;              :on-success      [::good-post-result]
-    ;              :on-failure      [::bad-post-result]}}))
-
