@@ -9,6 +9,7 @@
                       :year 0
                       :feet 0
                       :tonne 0
+                      :axles
                       :features []
                       :photos []
                       :videos []})
