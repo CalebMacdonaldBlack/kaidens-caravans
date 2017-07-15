@@ -17,6 +17,7 @@
                    :price 40000
                    :year 1998
                    :feet 21
+                   :axles 2
                    :tonne 2.5
                    :features ["shower" "toilet"]
                    :photos ["http://img.com/fakeimage.jpg"]
@@ -26,6 +27,12 @@
   (testing "create-caravan"
     (with-redefs [create-caravan! (mock-db mock-caravan 1)]
       (let [{:keys [status body]} (create! {:body-params mock-caravan})]
+        (is (= status 200))
+        (is (= {:rows-affected 1} body)))))
+
+  (testing "create-caravan expecting default values"
+    (with-redefs [create-caravan! (mock-db default-caravan 1)]
+      (let [{:keys [status body]} (create! {:body-params {}})]
         (is (= status 200))
         (is (= {:rows-affected 1} body)))))
 
@@ -40,6 +47,14 @@
           route-params {:id id}]
       (with-redefs [update-caravan! (mock-db (assoc mock-caravan :id id) 1)]
         (let [{:keys [status body]} (update! {:body-params mock-caravan :route-params route-params})]
+          (is (= status 200))
+          (is (= {:rows-affected 1} body))))))
+
+  (testing "update-caravan expecting default values"
+    (let [id "12341234"
+          route-params {:id id}]
+      (with-redefs [update-caravan! (mock-db (assoc default-caravan :id id) 1)]
+        (let [{:keys [status body]} (update! {:body-params {} :route-params route-params})]
           (is (= status 200))
           (is (= {:rows-affected 1} body))))))
 

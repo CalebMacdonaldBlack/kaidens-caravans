@@ -1,4 +1,7 @@
-(ns kaidens-caravans.db)
+(ns kaidens-caravans.db
+  (:require [reagent.core :as r]))
 
 (def default-db
-  {:page :home})
+  {:page :home
+   :current-caravan (r/atom {})})
+

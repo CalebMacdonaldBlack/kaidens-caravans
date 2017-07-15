@@ -3,7 +3,7 @@
             [secretary.core :as secretary]))
 
 (secretary/defroute "/" []
-  (rf/dispatch [:set-active-page :home]))
+                    (rf/dispatch [:set-active-page :home]))
 
 (defn home-page []
-  [:section>h1 "Home Page"])
+  [:div.container>h1 "Home Page"])

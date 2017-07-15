@@ -1,12 +1,8 @@
 (ns kaidens-caravans.subscriptions
   (:require [re-frame.core :refer [reg-sub]]))
 
-(reg-sub
-  :page
-  (fn [db _]
-    (:page db)))
+(defn- page [db _] (:page db))
+(defn- current-caravan [db _] (:current-caravan db))
 
-(reg-sub
-  :docs
-  (fn [db _]
-    (:docs db)))
+(reg-sub :page page)
+(reg-sub :current-caravan current-caravan)

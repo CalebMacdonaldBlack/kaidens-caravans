@@ -1,18 +1,18 @@
 (ns kaidens-caravans.routes.core
   (:require [kaidens-caravans.layout :as layout]
-            [kaidens-caravans.views.home :refer [home-page]]
-            [kaidens-caravans.views.manager :refer [manager-page]]
             [kaidens-caravans.business-layer.caravans :as caravans]
             [hiccup.core :refer [html]]
             [compojure.api.sweet :refer [defapi context GET POST PUT DELETE]]
             [ring.util.http-response :refer [content-type ok]]
             [ring.util.http-response :as response]))
 
+(declare ^:dynamic *app-context*)
+
 (defapi my-routes
-  (GET "/" [] (content-type (ok (home-page)) "text/html; charset=utf-8"))
+  (GET "/" [] (layout/render "homepage.html"))
 
   (context "/manager" []
-    (GET "/" [] (manager-page)))
+    (GET "/" [] (layout/render "manager.html")))
 
   (context "/caravans" []
     (POST "/" {:as request} (caravans/create! request))
