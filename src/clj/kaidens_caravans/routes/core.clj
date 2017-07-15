@@ -1,7 +1,5 @@
 (ns kaidens-caravans.routes.core
   (:require [kaidens-caravans.layout :as layout]
-            [kaidens-caravans.views.home :refer [home-page]]
-            [kaidens-caravans.views.manager :refer [manager-page]]
             [kaidens-caravans.business-layer.caravans :as caravans]
             [hiccup.core :refer [html]]
             [compojure.api.sweet :refer [defapi context GET POST PUT DELETE]]
