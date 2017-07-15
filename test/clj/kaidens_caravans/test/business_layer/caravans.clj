@@ -17,6 +17,7 @@
                    :price 40000
                    :year 1998
                    :feet 21
+                   :axles 2
                    :tonne 2.5
                    :features ["shower" "toilet"]
                    :photos ["http://img.com/fakeimage.jpg"]
