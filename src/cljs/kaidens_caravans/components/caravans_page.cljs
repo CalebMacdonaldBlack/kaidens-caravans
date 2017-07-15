@@ -1,20 +1,21 @@
 (ns kaidens-caravans.components.caravans-page
   (:require [re-frame.core :as rf]
             [reagent.core :as r]
+            [ajax.core :refer [GET POST]]
             [secretary.core :as secretary]))
 
 (secretary/defroute "/caravans" []
                     (rf/dispatch [:set-active-page :caravans]))
 
 (defn form-input [name key size type ratom]
-  [:div {:class (str "form-group " "col-md-" size)}
-   [:label name]
-   [:input.form-control {:type type
-                         :on-change #(swap! ratom assoc key (.-target.value %))
-                         :value (key @ratom)}]])
+  [:div.form-group.row
+   [:label.col-2.col-form-label name]
+   [:div.col-10>input.form-control {:type type
+                                    :on-change #(swap! ratom assoc key (.-target.value %))
+                                    :value (key @ratom)}]])
 
 (defn modify-caravan-form [caravan]
-  [:div.row
+  [:div
    [form-input "Make" :make 3 "text" caravan]
    [form-input "Model" :model 3 "text" caravan]
    [form-input "Type" :type 2 "text" caravan]
@@ -34,11 +35,12 @@
 (defn caravans-page []
   (let [caravan @(rf/subscribe [:current-caravan])]
     [:div.container
+     [:br]
      [:h1 "Caravans"]
-     [:div.well
+     [:div.card.card-block
       [:h2 "New Caravan"]
       [:br]
       [modify-caravan-form caravan]
       [:br]
-      [:button.btn.btn-success {:type "button" :on-click (rf/dispatch [:create-caravan @caravan])} "New Caravan"]]]))
+      [:button.btn.btn-primary {:type "button" :on-click #(rf/dispatch [:create-caravan @caravan])} "Add New Caravan"]]]))
 

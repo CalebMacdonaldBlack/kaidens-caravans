@@ -1,6 +1,7 @@
 (ns kaidens-caravans.core
   (:require [reagent.core :as r]
             [re-frame.core :as rf]
+            [day8.re-frame.http-fx]
             [goog.events :as events]
             [goog.history.EventType :as HistoryEventType]
             [markdown.core :refer [md->html]]

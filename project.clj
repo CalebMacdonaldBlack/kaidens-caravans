@@ -11,6 +11,7 @@
                  [com.rpl/specter "1.0.1"]
                  [conman "0.6.4"]
                  [cprop "0.1.10"]
+                 [day8.re-frame/http-fx "0.1.4"]
                  [funcool/struct "1.0.0"]
                  [hiccup "1.0.5"]
                  [luminus-immutant "0.2.3"]
