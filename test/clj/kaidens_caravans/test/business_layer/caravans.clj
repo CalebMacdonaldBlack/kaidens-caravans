@@ -29,6 +29,13 @@
         (is (= status 200))
         (is (= {:rows-affected 1} body)))))
 
+  (testing "create-caravan expecting default values"
+    (with-redefs [create-caravan! (mock-db default-caravan 1)]
+      (let [{:keys [status body]} (create! {:body-params {}})]
+        (is (= status 200))
+        (is (= {:rows-affected 1} body)))))
+
+
   (testing "retrieve-caravans"
     (with-redefs [retrieve-caravans (constantly [mock-caravan])]
       (let [{:keys [status body]} (retrieve)]
