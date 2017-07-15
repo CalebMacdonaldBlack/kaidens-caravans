@@ -50,6 +50,14 @@
           (is (= status 200))
           (is (= {:rows-affected 1} body))))))
 
+  (testing "update-caravan expecting default values"
+    (let [id "12341234"
+          route-params {:id id}]
+      (with-redefs [update-caravan! (mock-db (assoc default-caravan :id id) 1)]
+        (let [{:keys [status body]} (update! {:body-params {} :route-params route-params})]
+          (is (= status 200))
+          (is (= {:rows-affected 1} body))))))
+
   (testing "delete-caravan"
     (let [id {:id "69fc8418-74ed-421b-bcf3-c237f1901d8e"}]
       (with-redefs [delete-caravan! (mock-db id 1)]
