@@ -40,5 +40,11 @@
   (testing "edit-caravan"
     (with-redefs [put-json (constantly "called")]
                  (let [edit-caravan #'h/edit-caravan]
-                   (is (= "called" (edit-caravan {:test "hello"})))))))
+                   (is (= "called" (edit-caravan {:test "hello"}))))))
+
+  (testing "set-hide-disabled"
+    (let [set-hide-disabled #'h/set-hide-disabled
+          result (set-hide-disabled {:db {:hide-disabled false}} [nil true])]
+      (is (= result {:db {:hide-disabled true}
+                     :dispatch [:load-caravans]})))))
 
