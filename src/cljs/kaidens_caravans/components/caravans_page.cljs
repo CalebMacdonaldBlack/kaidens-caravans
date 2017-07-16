@@ -33,19 +33,22 @@
    [form-input "Suspension" :suspension "text" caravan]
    [form-input "price" :price "number" caravan]])
 
-(defn new-caravan [caravan]
-  [:div#caravanModal.modal.fade {:tabindex "-1" :aria-labelledby "caravanModalLabel" :aria-hidden "true" :role "dialog"}
-   [:div.modal-dialog.modal-lg {:role "document"}
-    [:div.modal-content
-     [:div.modal-header
-      [:h5#caravanModalLabel.modal-title "New Caravan"]
-      [:button.close {:type "button" :data-dismiss "modal" :aria-label "Close"}
-       [:i.fa.fa-times {:aria-hidden "true"}]]]
-     [:div.modal-body
-      [modify-caravan-form caravan]]
-     [:div.modal-footer
-      [:button.btn.btn-secondary {:type "button" :data-dismiss "modal"} "Close"]
-      [:button.btn.btn-primary {:type "button":on-click #(rf/dispatch [:create-caravan @caravan])}  "Save Changes"]]]]])
+(defn caravan-modal [caravan]
+  (let [new? (:id @caravan)
+        title (if new? "Edit Caravan" "New Caravan")
+        action (if new? #(rf/dispatch [:create-caravan @caravan]) #(js/alert "Edit not implemented!"))]
+    [:div#caravanModal.modal.fade {:tabindex "-1" :aria-labelledby "caravanModalLabel" :aria-hidden "true" :role "dialog"}
+     [:div.modal-dialog.modal-lg {:role "document"}
+      [:div.modal-content
+       [:div.modal-header
+        [:h5#caravanModalLabel.modal-title title]
+        [:button.close {:type "button" :data-dismiss "modal" :aria-label "Close"}
+         [:i.fa.fa-times {:aria-hidden "true"}]]]
+       [:div.modal-body
+        [modify-caravan-form caravan]]
+       [:div.modal-footer
+        [:button.btn.btn-secondary {:type "button" :data-dismiss "modal"} "Close"]
+        [:button.btn.btn-primary {:type "button":on-click action}  "Save Changes"]]]]]))
 
 (defn caravan-table-row [{:keys [vin make model type terrain feet tonne year price]}]
   [:tr
@@ -84,8 +87,9 @@
     [:div.container-fluid.row.mt-5
      [:div.col-8.offset-1.mb-3>h1 "Caravans"]
      [:div.col-2>button.btn.btn-success.float-right {:type "button"
+                                                     :on-click #(rf/dispatch [:clear-current-caravan])
                                                      :data-toggle "modal"
                                                      :data-target "#caravanModal"}
       "Add New Caravan"]
      [caravan-table]
-     [new-caravan caravan]]))
+     [caravan-modal caravan]]))
