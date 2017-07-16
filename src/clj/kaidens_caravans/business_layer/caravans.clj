@@ -12,7 +12,8 @@
                       :axles ""
                       :features []
                       :photos []
-                      :videos []})
+                      :videos []
+                      :archived false})
 
 (defn create!
   [{:keys [body-params]}]

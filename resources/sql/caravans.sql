@@ -18,7 +18,8 @@ INSERT INTO caravans
  frame,
  suspension,
  condition,
- vin)
+ vin,
+ archived)
 VALUES
   (:type,
    :make,
@@ -37,7 +38,8 @@ VALUES
    :frame,
    :suspension,
    :condition,
-   :vin);
+   :vin,
+   :archived);
 
 -- :name retrieve-caravans :? :*
 -- :doc retrieves caravans
@@ -66,7 +68,8 @@ SET
   frame = :frame,
   suspension = :suspension,
   condition = :condition,
-  vin = :vin
+  vin = :vin,
+  archived = :archived
 WHERE id = :id::UUID;
 
 -- :name delete-caravan! :! :n
