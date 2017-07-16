@@ -10,15 +10,15 @@
 (defn form-input [name key type ratom]
   [:div.form-group.row
    [:label.col-2.col-form-label name]
-   [:div.col-10>input.form-control {:type type
+   [:div.col-10>input.form-control {:type      type
                                     :on-change #(swap! ratom assoc key (.-target.value %))
-                                    :value (key @ratom)}]])
+                                    :value     (key @ratom)}]])
 
 (defn modify-caravan-form [caravan]
   [:div
-   [form-input "Make" :make"text" caravan]
-   [form-input "Model" :model"text" caravan]
-   [form-input "Type" :type"text" caravan]
+   [form-input "Make" :make "text" caravan]
+   [form-input "Model" :model "text" caravan]
+   [form-input "Type" :type "text" caravan]
    [form-input "VIN Number" :vin "text" caravan]
    [form-input "Frame" :frame "text" caravan]
    [form-input "Terrain" :terrain "text" caravan]
@@ -32,15 +32,32 @@
    [form-input "Suspension" :suspension "text" caravan]
    [form-input "price" :price "number" caravan]])
 
+(defn new-caravan [caravan]
+  [:h1 "Caravans"]
+  [:div.card.card-block [:h2 "New Caravan"]
+   [:br]
+   [modify-caravan-form caravan]
+   [:br]
+   [:button.btn.btn-primary {:type "button" :on-click #(rf/dispatch [:create-caravan @caravan])} "Add New Caravan"]])
+
+(defn caravan-table [caravan]
+  [:table.table.table-striped
+   [:thead
+    [:tr
+     [:th "VIN"]
+     [:th "Make"]
+     [:th "Model"]
+     [:th "Type"]
+     [:th "Terrain"]
+     [:th "Length (feet)"]
+     [:th "Weight (tonne)"]
+     [:th "Year"]
+     [:th "Price"]]]
+   [:tbody]])
+
 (defn caravans-page []
   (let [caravan @(rf/subscribe [:current-caravan])]
     [:div.container
      [:br]
-     [:h1 "Caravans"]
-     [:div.card.card-block
-      [:h2 "New Caravan"]
-      [:br]
-      [modify-caravan-form caravan]
-      [:br]
-      [:button.btn.btn-primary {:type "button" :on-click #(rf/dispatch [:create-caravan @caravan])} "Add New Caravan"]]]))
-
+     [caravan-table caravan]
+     [new-caravan caravan]]))
