@@ -38,8 +38,8 @@
         (is (= {:rows-affected 1} body)))))
 
   (testing "retrieve-caravans"
-    (with-redefs [retrieve-caravans (constantly [mock-caravan])]
-      (let [{:keys [status body]} (retrieve)]
+    (with-redefs [retrieve-caravans (fn [params] (is (= {:test "test"} params)) [mock-caravan])]
+      (let [{:keys [status body]} (retrieve {:query-params {"test" "test"}})]
         (is (= status 200))
         (is (= [mock-caravan] body)))))
 
