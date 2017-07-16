@@ -1,10 +1,13 @@
 (ns kaidens-caravans.components.caravan.caravan-table
   (:require [re-frame.core :as rf]))
 
-(defn- caravan-table-row [{:keys [vin make model type terrain feet tonne year price] :as caravan}]
+(defn- caravan-table-row [{:keys [vin make model type terrain feet tonne year price archived] :as caravan}]
   [:tr {:data-toggle "modal"
         :data-target "#caravanModal"
         :on-click (fn [] (reset! @(rf/subscribe [:current-caravan]) caravan))}
+   [:td (if archived
+            [:span.badge.badge-warning "Disabled"]
+            [:span.badge.badge-success "Enabled"])]
    [:td.text-right vin]
    [:td make]
    [:td model]
@@ -21,6 +24,7 @@
      [:table.table.table-striped.table-hover
       [:thead
        [:tr
+        [:th "Status"]
         [:th "VIN"]
         [:th "Make"]
         [:th "Model"]

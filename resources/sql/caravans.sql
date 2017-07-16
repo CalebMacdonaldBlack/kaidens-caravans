@@ -44,8 +44,7 @@ VALUES
 -- :name retrieve-caravans :? :*
 -- :doc retrieves caravans
 SELECT *
-FROM caravans
-WHERE caravans.archived = FALSE;
+FROM caravans;
 
 -- :name update-caravan! :! :n
 -- :doc update an existing caravan record give the id
