@@ -70,7 +70,7 @@ SET
   make       = :make,
   model      = :model,
   price      = :price :: DOUBLE PRECISION,
-  YEAR       = :YEAR :: SMALLINT,
+  year       = :year :: SMALLINT,
   feet       = :feet :: SMALLINT,
   tonne      = :tonne :: DOUBLE PRECISION,
   features   = :features,

@@ -9,3 +9,6 @@
 
 (defn- caravans [db _] (:caravans db))
 (reg-sub :caravans caravans)
+
+(defn- hide-disabled [db _] (:hide-disabled db))
+(reg-sub :hide-disabled hide-disabled)
