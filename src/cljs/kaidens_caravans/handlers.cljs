@@ -1,6 +1,6 @@
 (ns kaidens-caravans.handlers
   (:require [kaidens-caravans.db :as db]
-            [kaidens-caravans.ajax :refer [post-json]]
+            [kaidens-caravans.ajax :refer [post-json get-json]]
             [re-frame.core :as rf]
             [re-frame.core :refer [dispatch reg-event-db reg-event-fx]]
             [ajax.core :as ajax]))
@@ -17,5 +17,14 @@
 (defn- create-caravan [_ [_ caravan]]
   (post-json {:url "/caravans"
               :body caravan
-              :after-success (rf/dispatch [:clear-current-caravan])}))
+              :after-success [[:clear-current-caravan] [:load-caravans]]}))
 (reg-event-fx :create-caravan create-caravan)
+
+(defn- set-caravans [{:keys [db]} [_ caravans]]
+  {:db (assoc db :caravans caravans)})
+(reg-event-fx :set-caravans set-caravans)
+
+(defn- load-caravans [_ _]
+  (get-json {:url "/caravans"
+             :after-success [[:set-caravans]]}))
+(reg-event-fx :load-caravans load-caravans)

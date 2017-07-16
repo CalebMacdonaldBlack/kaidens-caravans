@@ -5,6 +5,7 @@
             [secretary.core :as secretary]))
 
 (secretary/defroute "/caravans" []
+                    (rf/dispatch [:load-caravans])
                     (rf/dispatch [:set-active-page :caravans]))
 
 (defn form-input [name key type ratom]
@@ -33,31 +34,58 @@
    [form-input "price" :price "number" caravan]])
 
 (defn new-caravan [caravan]
-  [:h1 "Caravans"]
-  [:div.card.card-block [:h2 "New Caravan"]
-   [:br]
-   [modify-caravan-form caravan]
-   [:br]
-   [:button.btn.btn-primary {:type "button" :on-click #(rf/dispatch [:create-caravan @caravan])} "Add New Caravan"]])
+  [:div#exampleModal.modal.fade {:tabindex "-1" :aria-labelledby "exampleModalLabel" :aria-hidden "true" :role "dialog"}
+   [:div.modal-dialog.modal-lg {:role "document"}
+    [:div.modal-content
+     [:div.modal-header
+      [:h5#exampleModalLabel.modal-title "New Caravan"]
+      [:button.close {:type "button" :data-dismiss "modal" :aria-label "Close"}
+       [:i.fa.fa-times {:aria-hidden "true"}]]]
+     [:div.modal-body
+      [modify-caravan-form caravan]]
+     [:div.modal-footer
+      [:button.btn.btn-secondary {:type "button" :data-dismiss "modal"} "Close"]
+      [:button.btn.btn-primary {:type "button":on-click #(rf/dispatch [:create-caravan @caravan])}  "Save Changes"]]]]])
 
-(defn caravan-table [caravan]
-  [:table.table.table-striped
-   [:thead
-    [:tr
-     [:th "VIN"]
-     [:th "Make"]
-     [:th "Model"]
-     [:th "Type"]
-     [:th "Terrain"]
-     [:th "Length (feet)"]
-     [:th "Weight (tonne)"]
-     [:th "Year"]
-     [:th "Price"]]]
-   [:tbody]])
+(defn caravan-table-row [{:keys [vin make model type terrain feet tonne year price]}]
+  [:tr
+   [:td.text-right vin]
+   [:td make]
+   [:td model]
+   [:td type]
+   [:td terrain]
+   [:td.text-right feet]
+   [:td.text-right tonne]
+   [:td.text-right year]
+   [:td.text-right price]])
+
+(defn caravan-table []
+  (let [caravans @(rf/subscribe [:caravans])]
+    [:div.col-10.offset-1
+      [:table.table.table-striped
+       [:thead
+        [:tr
+         [:th "VIN"]
+         [:th "Make"]
+         [:th "Model"]
+         [:th "Type"]
+         [:th "Terrain"]
+         [:th "Length (feet)"]
+         [:th "Weight (tonne)"]
+         [:th "Year"]
+         [:th "Price"]]]
+       [:tbody
+        (for [caravan caravans]
+          [caravan-table-row caravan])]]]))
 
 (defn caravans-page []
-  (let [caravan @(rf/subscribe [:current-caravan])]
-    [:div.container
-     [:br]
-     [caravan-table caravan]
+  (let [caravan @(rf/subscribe [:current-caravan])
+        new-caravan-toggle (r/atom false)]
+    [:div.container-fluid.row.mt-5
+     [:div.col-8.offset-1.mb-3>h1 "Caravans"]
+     [:div.col-2>button.btn.btn-success.float-right {:type "button"
+                                                     :data-toggle "modal"
+                                                     :data-target "#exampleModal"}
+      "Add New Caravan"]
+     [caravan-table]
      [new-caravan caravan]]))
