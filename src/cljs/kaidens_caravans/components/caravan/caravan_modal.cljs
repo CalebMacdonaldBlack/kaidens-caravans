@@ -3,13 +3,27 @@
 
 (defn- form-input [name key type ratom]
   [:div.form-group.row
-   [:label.col-2.col-form-label name]
-   [:div.col-10>input.form-control {:type      type
+   [:label.col-3.col-form-label name]
+   [:div.col-9>input.form-control {:type      type
                                     :on-change #(swap! ratom assoc key (.-target.value %))
                                     :value     (key @ratom)}]])
 
+(defn form-select [name key options ratom coerce]
+  [:div.form-group.row
+   [:label.col-3.col-form-label name]
+   [:div.col-9>select.form-control {:on-change #(swap! ratom assoc key (coerce (.-target.value %)))
+                                    :value (if (key @ratom) "true" "false")}
+    (for [[label value] options]
+      ^{:key (str name value)}
+      [:option {:value value} label])]])
+
 (defn- modify-caravan-form [caravan]
   [:div
+   (when (:archived @caravan)
+     [:div.alert.alert-warning {:role "alert"}
+      [:i.fa.fa-warning]
+      " This caravan is disabled and will not show up on the website."])
+   [form-select "Status" :archived [["Enabled" false] ["Disabled" true]] caravan #(= "true" %)]
    [form-input "Make" :make "text" caravan]
    [form-input "Model" :model "text" caravan]
    [form-input "Type" :type "text" caravan]
@@ -41,5 +55,5 @@
         [modify-caravan-form caravan]]
        [:div.modal-footer
         [:button.btn.btn-secondary {:type "button" :data-dismiss "modal"} "Close"]
-        [:button.btn.btn-primary {:type "button" :on-click action}  "Save Changes"]]]]]))
+        [:button.btn.btn-primary {:type "button" :on-click action} "Save Changes"]]]]]))
 

@@ -21,7 +21,8 @@
                    :tonne 2.5
                    :features ["shower" "toilet"]
                    :photos ["http://img.com/fakeimage.jpg"]
-                   :videos ["http://vid.com/fakevideo.mp4"]})
+                   :videos ["http://vid.com/fakevideo.mp4"]
+                   :archived true})
 
 (deftest test-caravans
   (testing "create-caravan"
