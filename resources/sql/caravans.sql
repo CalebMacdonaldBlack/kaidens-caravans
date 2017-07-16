@@ -39,7 +39,7 @@ VALUES
    :suspension,
    :condition,
    :vin,
-   :archived);
+   :archived::BOOLEAN);
 
 -- :name retrieve-caravans :? :*
 -- :doc retrieves caravans
@@ -69,7 +69,7 @@ SET
   suspension = :suspension,
   condition = :condition,
   vin = :vin,
-  archived = :archived
+  archived = :archived::BOOLEAN
 WHERE id = :id::UUID;
 
 -- :name delete-caravan! :! :n
