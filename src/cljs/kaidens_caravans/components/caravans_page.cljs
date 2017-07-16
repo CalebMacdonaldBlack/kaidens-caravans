@@ -34,11 +34,11 @@
    [form-input "price" :price "number" caravan]])
 
 (defn new-caravan [caravan]
-  [:div#exampleModal.modal.fade {:tabindex "-1" :aria-labelledby "exampleModalLabel" :aria-hidden "true" :role "dialog"}
+  [:div#caravanModal.modal.fade {:tabindex "-1" :aria-labelledby "caravanModalLabel" :aria-hidden "true" :role "dialog"}
    [:div.modal-dialog.modal-lg {:role "document"}
     [:div.modal-content
      [:div.modal-header
-      [:h5#exampleModalLabel.modal-title "New Caravan"]
+      [:h5#caravanModalLabel.modal-title "New Caravan"]
       [:button.close {:type "button" :data-dismiss "modal" :aria-label "Close"}
        [:i.fa.fa-times {:aria-hidden "true"}]]]
      [:div.modal-body
@@ -85,7 +85,7 @@
      [:div.col-8.offset-1.mb-3>h1 "Caravans"]
      [:div.col-2>button.btn.btn-success.float-right {:type "button"
                                                      :data-toggle "modal"
-                                                     :data-target "#exampleModal"}
+                                                     :data-target "#caravanModal"}
       "Add New Caravan"]
      [caravan-table]
      [new-caravan caravan]]))
