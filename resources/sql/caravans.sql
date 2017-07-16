@@ -62,10 +62,10 @@ SET
   axles = :axles,
   terrain = :terrain,
   bed = :bed,
-  fridge = :fidge,
+  fridge = :fridge,
   frame = :frame,
   suspension = :suspension,
-  conditionn = :condition,
+  condition = :condition,
   vin = :vin
 WHERE id = :id::UUID;
 

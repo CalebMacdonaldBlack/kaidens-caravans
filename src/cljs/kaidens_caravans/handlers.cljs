@@ -1,6 +1,6 @@
 (ns kaidens-caravans.handlers
   (:require [kaidens-caravans.db :as db]
-            [kaidens-caravans.ajax :refer [post-json get-json]]
+            [kaidens-caravans.ajax :refer [post-json get-json put-json]]
             [re-frame.core :as rf]
             [re-frame.core :refer [dispatch reg-event-db reg-event-fx]]
             [ajax.core :as ajax]))
@@ -17,7 +17,7 @@
 (defn- create-caravan [_ [_ caravan]]
   (post-json {:url "/caravans"
               :body caravan
-              :after-success [[:clear-current-caravan] [:load-caravans]]}))
+              :after-success [[:clear-current-caravan] [:load-caravans] [:hide-modal "#caravanModal"]]}))
 (reg-event-fx :create-caravan create-caravan)
 
 (defn- set-caravans [{:keys [db]} [_ caravans]]
@@ -28,3 +28,15 @@
   (get-json {:url "/caravans"
              :after-success [[:set-caravans]]}))
 (reg-event-fx :load-caravans load-caravans)
+
+(defn- hide-modal [_ [_ id]]
+  (.modal (js/jQuery id) "hide")
+  {})
+(reg-event-fx :hide-modal hide-modal)
+
+(defn- edit-caravan [{:keys [db]} [_ caravan]]
+  (put-json {:url (str "/caravans/" (:id caravan))
+             :body caravan
+             :after-success [[:load-caravans] [:hide-modal "#caravanModal"]]}))
+(reg-event-fx :edit-caravan edit-caravan)
+
