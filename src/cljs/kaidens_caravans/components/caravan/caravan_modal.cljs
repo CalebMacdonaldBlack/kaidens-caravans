@@ -29,7 +29,7 @@
 (defn caravan-modal [caravan]
   (let [new? (:id @caravan)
         title (if new? "Edit Caravan" "New Caravan")
-        action (if new? #(js/alert "Edit not implemented!") #(rf/dispatch [:create-caravan @caravan]))]
+        action (if new? #(rf/dispatch [:edit-caravan @caravan]) #(rf/dispatch [:create-caravan @caravan]))]
     [:div#caravanModal.modal.fade {:aria-labelledby "caravanModalLabel" :aria-hidden "true" :role "dialog"}
      [:div.modal-dialog.modal-lg {:role "document"}
       [:div.modal-content
@@ -41,5 +41,5 @@
         [modify-caravan-form caravan]]
        [:div.modal-footer
         [:button.btn.btn-secondary {:type "button" :data-dismiss "modal"} "Close"]
-        [:button.btn.btn-primary {:type "button":on-click action}  "Save Changes"]]]]]))
+        [:button.btn.btn-primary {:type "button" :on-click action}  "Save Changes"]]]]]))
 

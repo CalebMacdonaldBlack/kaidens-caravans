@@ -1,6 +1,6 @@
 (ns kaidens-caravans.test.handler
   (:require [cljs.test :refer-macros [is are deftest testing use-fixtures]]
-            [kaidens-caravans.ajax :refer [post-json get-json]]
+            [kaidens-caravans.ajax :refer [post-json get-json put-json]]
             [pjstadig.humane-test-output]
             [reagent.core :as r]
             [kaidens-caravans.handlers :as h]))
@@ -35,4 +35,10 @@
   (testing "create-caravan"
     (with-redefs [get-json (constantly "called")]
       (let [load-caravan #'h/load-caravans]
-        (is (= "called" (load-caravan {:test "hello"})))))))
+        (is (= "called" (load-caravan {:test "hello"}))))))
+
+  (testing "edit-caravan"
+    (with-redefs [put-json (constantly "called")]
+                 (let [edit-caravan #'h/edit-caravan]
+                   (is (= "called" (edit-caravan {:test "hello"})))))))
+
