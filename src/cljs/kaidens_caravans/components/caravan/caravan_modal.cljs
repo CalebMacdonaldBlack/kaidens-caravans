@@ -8,11 +8,11 @@
                                     :on-change #(swap! ratom assoc key (.-target.value %))
                                     :value     (key @ratom)}]])
 
-(defn form-select [name key options ratom]
+(defn form-select [name key options ratom coerce]
   [:div.form-group.row
    [:label.col-3.col-form-label name]
-   [:div.col-9>select.form-control {:on-change #(swap! ratom assoc key (.-target.value %))}
-                          :value (key @ratom)
+   [:div.col-9>select.form-control {:on-change #(swap! ratom assoc key (coerce (.-target.value %)))
+                                    :value (if (key @ratom) "true" "false")}
     (for [[label value] options]
       ^{:key (str name value)}
       [:option {:value value} label])]])
@@ -23,7 +23,7 @@
      [:div.alert.alert-warning {:role "alert"}
       [:i.fa.fa-warning]
       " This caravan is disabled and will not show up on the website."])
-   [form-select "Status" :archived [["Enabled" false] ["Disabled" true]] caravan]
+   [form-select "Status" :archived [["Enabled" false] ["Disabled" true]] caravan #(= "true" %)]
    [form-input "Make" :make "text" caravan]
    [form-input "Model" :model "text" caravan]
    [form-input "Type" :type "text" caravan]
