@@ -3,5 +3,6 @@
 
 (def default-db
   {:page :home
+   :hide-disabled true
    :current-caravan (r/atom {})})
 

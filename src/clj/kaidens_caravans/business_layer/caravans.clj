@@ -19,8 +19,9 @@
   [{:keys [body-params]}]
   (response/ok {:rows-affected (create-caravan! (merge default-caravan body-params))}))
 
-(defn retrieve []
-  (response/ok (retrieve-caravans)))
+(defn retrieve
+  [{:keys [query-params]}]
+  (response/ok (retrieve-caravans (clojure.walk/keywordize-keys query-params))))
 
 (defn update!
   [{:keys [body-params route-params]}]

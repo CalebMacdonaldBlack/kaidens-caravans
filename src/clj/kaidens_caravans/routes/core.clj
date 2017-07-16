@@ -16,6 +16,6 @@
 
   (context "/caravans" []
     (POST "/" {:as request} (caravans/create! request))
-    (GET "/" {:as request} (caravans/retrieve))
+    (GET "/" {:as request} (caravans/retrieve request))
     (PUT "/:id" {:as request} (caravans/update! request))
     (DELETE "/:id" {:as request} (caravans/delete! request))))

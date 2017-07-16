@@ -18,4 +18,9 @@
   (testing "caravans"
     (let [db {:caravans "testvalue"}
           caravans #'s/caravans]
-      (is (= (caravans db) "testvalue")))))
+      (is (= (caravans db) "testvalue"))))
+
+  (testing "hide-disabled"
+    (let [db {:hide-disabled true}
+          hide-disabled #'s/hide-disabled]
+      (is (= (hide-disabled db) true)))))

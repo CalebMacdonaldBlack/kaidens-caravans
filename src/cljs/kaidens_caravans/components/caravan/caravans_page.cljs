@@ -20,5 +20,11 @@
                                                      :data-toggle "modal"
                                                      :data-target "#caravanModal"}
       "Add New Caravan"]
+     [:div.col-2.offset-1.mb-4
+      [:label.form-check-label
+       [:input.form-check-input {:type "checkbox"
+                                 :on-change #(rf/dispatch [:set-hide-disabled (.-target.checked %)])
+                                 :checked @(rf/subscribe [:hide-disabled])}]
+       " Hide disabled"]]
      [caravan-table]
      [caravan-modal caravan]]))

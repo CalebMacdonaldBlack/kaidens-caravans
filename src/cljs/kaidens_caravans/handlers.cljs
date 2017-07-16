@@ -24,8 +24,8 @@
   {:db (assoc db :caravans caravans)})
 (reg-event-fx :set-caravans set-caravans)
 
-(defn- load-caravans [_ _]
-  (get-json {:url "/caravans"
+(defn- load-caravans [{:keys [db]} _]
+  (get-json {:url (if (:hide-disabled db) "/caravans?archived=false" "/caravans")
              :after-success [[:set-caravans]]}))
 (reg-event-fx :load-caravans load-caravans)
 
@@ -40,3 +40,7 @@
              :after-success [[:load-caravans] [:hide-modal "#caravanModal"]]}))
 (reg-event-fx :edit-caravan edit-caravan)
 
+(defn- set-hide-disabled [{:keys [db]} [_ value]]
+  {:db (assoc db :hide-disabled value)
+   :dispatch [:load-caravans]})
+(reg-event-fx :set-hide-disabled set-hide-disabled)
