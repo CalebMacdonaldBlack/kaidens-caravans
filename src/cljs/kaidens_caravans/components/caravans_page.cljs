@@ -37,7 +37,7 @@
   (let [new? (:id @caravan)
         title (if new? "Edit Caravan" "New Caravan")
         action (if new? #(js/alert "Edit not implemented!") #(rf/dispatch [:create-caravan @caravan]))]
-    [:div#caravanModal.modal.fade {:tabindex "-1" :aria-labelledby "caravanModalLabel" :aria-hidden "true" :role "dialog"}
+    [:div#caravanModal.modal.fade {:aria-labelledby "caravanModalLabel" :aria-hidden "true" :role "dialog"}
      [:div.modal-dialog.modal-lg {:role "document"}
       [:div.modal-content
        [:div.modal-header
@@ -67,7 +67,7 @@
 (defn caravan-table []
   (let [caravans @(rf/subscribe [:caravans])]
     [:div.col-10.offset-1
-      [:table.table.table-striped
+      [:table.table.table-striped.table-hover
        [:thead
         [:tr
          [:th "VIN"]
@@ -81,6 +81,7 @@
          [:th "Price"]]]
        [:tbody
         (for [caravan caravans]
+          ^{:key (:id caravan)}
           [caravan-table-row caravan])]]]))
 
 (defn caravans-page []
