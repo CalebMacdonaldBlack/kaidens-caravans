@@ -1,4 +1,4 @@
-(ns kaidens-caravans.components.caravans-page
+(ns kaidens-caravans.components.caravan.caravans-page
   (:require [re-frame.core :as rf]
             [reagent.core :as r]
             [kaidens-caravans.components.caravan.caravan-table :refer [caravan-table]]
