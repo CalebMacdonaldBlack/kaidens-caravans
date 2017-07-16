@@ -1,7 +1,7 @@
 (ns kaidens-caravans.components.page
   (:require [kaidens-caravans.components.nav :refer [nav]]
             [kaidens-caravans.components.home-page :refer [home-page]]
-            [kaidens-caravans.components.caravans-page :refer [caravans-page]]
+            [kaidens-caravans.components.caravan.caravans-page :refer [caravans-page]]
             [re-frame.core :as rf]))
 
 (defn pages []
