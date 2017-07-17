@@ -30,3 +30,15 @@
 (defn delete!
   [{:keys [route-params]}]
   (response/ok {:rows-affected (delete-caravan! route-params)}))
+
+(defn distinct-type-list []
+  (response/ok (map #(:type %)(search-type))))
+
+(defn distinct-make-list []
+  (response/ok (map #(:make %) (search-make))))
+
+(defn distinct-model-list []
+  (response/ok (map #(:model %) (search-model))))
+
+(defn distinct-condition-list []
+  (response/ok (map #(:condition %) (search-condition))))

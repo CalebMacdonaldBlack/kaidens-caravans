@@ -92,3 +92,20 @@ WHERE id = :id :: UUID;
 UPDATE caravans
 SET archived = TRUE
 WHERE id = :id :: UUID;
+
+-- :name search-type :? :*
+-- :doc retrieves a distinct list of the type column
+SELECT DISTINCT type FROM caravans;
+
+-- :name search-make :? :*
+-- :doc retrieves a distinct list of the make column
+SELECT DISTINCT make FROM caravans;
+
+-- :name search-model :? :*
+-- :doc retrieves a distinct list of the model column
+SELECT DISTINCT model FROM caravans;
+
+-- :name search-condition :? :*
+-- :doc retrieves a distinct list of the condition column
+SELECT DISTINCT condition FROM caravans;
+
