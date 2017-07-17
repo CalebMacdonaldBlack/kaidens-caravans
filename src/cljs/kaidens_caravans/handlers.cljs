@@ -2,8 +2,20 @@
   (:require [kaidens-caravans.db :as db]
             [kaidens-caravans.ajax :refer [post-json get-json put-json]]
             [re-frame.core :as rf]
-            [re-frame.core :refer [dispatch reg-event-db reg-event-fx]]
+            [re-frame.core :refer [dispatch reg-event-db reg-event-fx reg-fx]]
             [ajax.core :as ajax]))
+
+(defonce timeouts
+         (atom {}))
+
+(reg-fx :dispatch-debounce
+        (fn [[id event-vec n]]
+          (js/clearTimeout (@timeouts id))
+          (swap! timeouts assoc id
+                 (js/setTimeout (fn []
+                                  (dispatch event-vec)
+                                  (swap! timeouts dissoc id))
+                                n))))
 
 (defn- initialize-db [_ _] db/default-db)
 (reg-event-db :initialize-db initialize-db)
@@ -44,3 +56,16 @@
   {:db (assoc db :hide-disabled value)
    :dispatch [:load-caravans]})
 (reg-event-fx :set-hide-disabled set-hide-disabled)
+
+(reg-event-fx
+  :do-search
+  (fn [_ [_ search-string endpoint list-ratom id]]
+    (prn search-string endpoint)
+    (reset! list-ratom ["test1" "test2" "test3"])
+    (.addClass (js/jQuery (str "#" id)) "show")
+    {}))
+
+(reg-event-fx
+  :search-field-updated
+  (fn [_ [_ search-string endpoint list-ratom id]]
+    {:dispatch-debounce [::search [:do-search search-string endpoint list-ratom id] 250]}))
