@@ -10,28 +10,11 @@
                     (rf/dispatch [:load-caravans])
                     (rf/dispatch [:set-active-page :caravans]))
 
-(defn search-dropdown [id key caravan list endpoint]
-   [:div.dropdown {:id id}
-    [:input.form-control.dropdown-toggle {:id (str "input-" id)
-                                          :on-change #(do (rf/dispatch [:search-field-updated (.-target.value %) endpoint list id])
-                                                          (swap! caravan assoc key (.-target.value %)))
-                                          :value (key @caravan)
-                                          :data-toggle "dropdown"
-                                          :aria-haspopup "true"
-                                          :aria-expanded "false"}]
-    [:div.dropdown-menu.c-search-dropdown {:aria-labelledby (str "input-" id)}
-     (for [item @list]
-       ^{:key (str endpoint item)}
-       [:a.dropdown-item {:on-click #(swap! caravan assoc key item)} item])]])
-
 (defn caravans-page []
   (let [caravan @(rf/subscribe [:current-caravan])
-        new-caravan-toggle (r/atom false)
-        list (r/atom [])]
+        new-caravan-toggle (r/atom false)]
     [:div.container-fluid.row.mt-5
      [:div.col-8.offset-1.mb-3>h1 "Caravans"]
-     [:div.form-group
-      [search-dropdown "make-search" :make caravan list "/caravans/makes"]]
      [:div.col-2>button.btn.btn-success.float-right {:type "button"
                                                      :on-click #(rf/dispatch [:clear-current-caravan])
                                                      :data-toggle "modal"

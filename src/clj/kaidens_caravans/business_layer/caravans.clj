@@ -46,3 +46,23 @@
 (defn distinct-condition-list
   [{:keys [query-params]}]
   (response/ok (map #(:condition %) (search-condition (clojure.walk/keywordize-keys query-params)))))
+
+(defn distinct-terrain-list
+  [{:keys [query-params]}]
+  (response/ok (map #(:terrain %) (search-terrain (clojure.walk/keywordize-keys query-params)))))
+
+(defn distinct-bed-list
+  [{:keys [query-params]}]
+  (response/ok (map #(:bed %) (search-bed (clojure.walk/keywordize-keys query-params)))))
+
+(defn distinct-fridge-list
+  [{:keys [query-params]}]
+  (response/ok (map #(:fridge %) (search-fridge (clojure.walk/keywordize-keys query-params)))))
+
+(defn distinct-frame-list
+  [{:keys [query-params]}]
+  (response/ok (map #(:frame %) (search-frame (clojure.walk/keywordize-keys query-params)))))
+
+(defn distinct-suspension-list
+  [{:keys [query-params]}]
+  (response/ok (map #(:suspension %) (search-suspension (clojure.walk/keywordize-keys query-params)))))

@@ -58,14 +58,20 @@
 (reg-event-fx :set-hide-disabled set-hide-disabled)
 
 (reg-event-fx
-  :do-search
-  (fn [_ [_ search-string endpoint list-ratom id]]
-    (prn search-string endpoint)
-    (reset! list-ratom ["test1" "test2" "test3"])
+  :set-search-list
+  (fn [_ [_ list-ratom id result]]
+    (reset! list-ratom result)
     (.addClass (js/jQuery (str "#" id)) "show")
     {}))
 
+
+(reg-event-fx
+  :do-search
+  (fn [_ [_ endpoint list-ratom id]]
+    (get-json{:url endpoint
+              :after-success [[:set-search-list list-ratom id]]})))
+
 (reg-event-fx
   :search-field-updated
-  (fn [_ [_ search-string endpoint list-ratom id]]
-    {:dispatch-debounce [::search [:do-search search-string endpoint list-ratom id] 250]}))
+  (fn [_ [_ endpoint list-ratom id]]
+    {:dispatch-debounce [::search [:do-search endpoint list-ratom id] 250]}))

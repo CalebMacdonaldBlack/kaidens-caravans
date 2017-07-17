@@ -109,3 +109,23 @@ SELECT DISTINCT model FROM caravans WHERE model ILIKE CONCAT('%',:query ,'%');
 -- :doc retrieves a distinct list of the condition column
 SELECT DISTINCT condition FROM caravans WHERE condition ILIKE CONCAT('%',:query ,'%');
 
+-- :name search-terrain :? :*
+-- :doc retrieves a distinct list of the terrain column
+SELECT DISTINCT terrain FROM caravans WHERE terrain ILIKE CONCAT('%',:query ,'%');
+
+-- :name search-bed :? :*
+-- :doc retrieves a distinct list of the bed column
+SELECT DISTINCT bed FROM caravans WHERE bed ILIKE CONCAT('%',:query ,'%');
+
+-- :name search-fridge :? :*
+-- :doc retrieves a distinct list of the fridge column
+SELECT DISTINCT fridge FROM caravans WHERE fridge ILIKE CONCAT('%',:query ,'%');
+
+-- :name search-frame :? :*
+-- :doc retrieves a distinct list of the frame column
+SELECT DISTINCT frame FROM caravans WHERE frame ILIKE CONCAT('%',:query ,'%');
+
+-- :name search-suspension :? :*
+-- :doc retrieves a distinct list of the suspension column
+SELECT DISTINCT suspension FROM caravans WHERE suspension ILIKE CONCAT('%',:query ,'%');
+

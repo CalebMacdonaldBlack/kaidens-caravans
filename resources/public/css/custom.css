@@ -5,3 +5,9 @@
     border-top-right-radius: 0;
     margin: 0;
 }
+
+.c-input-right {
+    float: right;
+    margin-top: -1.2em;
+    margin-right: .2em;
+}
