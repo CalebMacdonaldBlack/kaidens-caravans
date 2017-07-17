@@ -95,17 +95,17 @@ WHERE id = :id :: UUID;
 
 -- :name search-type :? :*
 -- :doc retrieves a distinct list of the type column
-SELECT DISTINCT type FROM caravans;
+SELECT DISTINCT type FROM caravans WHERE type ILIKE CONCAT('%',:query ,'%');
 
 -- :name search-make :? :*
 -- :doc retrieves a distinct list of the make column
-SELECT DISTINCT make FROM caravans;
+SELECT DISTINCT make FROM caravans WHERE make ILIKE CONCAT('%',:query ,'%');
 
 -- :name search-model :? :*
 -- :doc retrieves a distinct list of the model column
-SELECT DISTINCT model FROM caravans;
+SELECT DISTINCT model FROM caravans WHERE model ILIKE CONCAT('%',:query ,'%');
 
 -- :name search-condition :? :*
 -- :doc retrieves a distinct list of the condition column
-SELECT DISTINCT condition FROM caravans;
+SELECT DISTINCT condition FROM caravans WHERE condition ILIKE CONCAT('%',:query ,'%');
 

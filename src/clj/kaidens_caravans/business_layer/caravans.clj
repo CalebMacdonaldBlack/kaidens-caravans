@@ -31,14 +31,18 @@
   [{:keys [route-params]}]
   (response/ok {:rows-affected (delete-caravan! route-params)}))
 
-(defn distinct-type-list []
-  (response/ok (map #(:type %)(search-type))))
+(defn distinct-type-list
+  [{:keys [query-params]}]
+  (response/ok (map #(:type %)(search-type (clojure.walk/keywordize-keys query-params)))))
 
-(defn distinct-make-list []
-  (response/ok (map #(:make %) (search-make))))
+(defn distinct-make-list
+  [{:keys [query-params]}]
+  (response/ok (map #(:make %) (search-make (clojure.walk/keywordize-keys query-params)))))
 
-(defn distinct-model-list []
-  (response/ok (map #(:model %) (search-model))))
+(defn distinct-model-list
+  [{:keys [query-params]}]
+  (response/ok (map #(:model %) (search-model (clojure.walk/keywordize-keys query-params)))))
 
-(defn distinct-condition-list []
-  (response/ok (map #(:condition %) (search-condition))))
+(defn distinct-condition-list
+  [{:keys [query-params]}]
+  (response/ok (map #(:condition %) (search-condition (clojure.walk/keywordize-keys query-params)))))
