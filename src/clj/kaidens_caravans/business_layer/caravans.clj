@@ -10,13 +10,13 @@
                       :feet 0
                       :tonne 0
                       :axles ""
-                      :vin
-                      :frame
-                      :terrain
-                      :condition
-                      :bed
-                      :fridge
-                      :suspension
+                      :vin ""
+                      :frame ""
+                      :terrain ""
+                      :condition ""
+                      :bed ""
+                      :fridge ""
+                      :suspension ""
                       :features []
                       :photos []
                       :videos []

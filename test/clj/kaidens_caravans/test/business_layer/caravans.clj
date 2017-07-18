@@ -19,6 +19,13 @@
                    :feet 21
                    :axles 2
                    :tonne 2.5
+                   :vin "123441234"
+                   :frame "aluminium"
+                   :terrain "off road"
+                   :condition "water damage"
+                   :bed "double"
+                   :fridge "gas"
+                   :suspension "leaf"
                    :features ["shower" "toilet"]
                    :photos ["http://img.com/fakeimage.jpg"]
                    :videos ["http://vid.com/fakevideo.mp4"]
