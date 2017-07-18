@@ -32,3 +32,4 @@ package-lock.json
 .envrc
 out/
 .idea/dictionaries/calebmacdonaldblack.xml
+env.list

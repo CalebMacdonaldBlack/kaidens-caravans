@@ -9,3 +9,8 @@ test:
     - lein kibit
     - lein trampoline test
     - lein with-profile test doo phantom once
+deployment:
+  dockerhub-master:
+	branch: master
+	commands:
+	  - "curl -H \"Content-Type: application/json\" --data '{\"source_type\": \"Branch\", \"source_name\": \"development\"}' -X POST $DOCKER_HUB_WEBHOOK" 
