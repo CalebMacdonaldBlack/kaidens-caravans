@@ -1,0 +1,8 @@
+.lift-card {
+    transition: .3s;
+}
+
+.lift-card:hover {
+    margin-top: -2em;
+    transition: .5s;
+}
