@@ -6,25 +6,133 @@
     <title>Website</title>
 </head>
 <body>
+<div class="jumbotron jumbotron-fluid p-4" style="background-color: white; color: #333">
+    <h1 class="ml-3 d-inline" style="font-weight: 300"><span style="color: #F44336; font-weight: 600">A</span>ustralian <span style="color: #F44336; font-weight: 600">C</span>aravans <span style="color: #F44336; font-weight: 600">T</span>ownsville</h1>
+    <h2 class="float-right d-inline mr-3" style="color: #F44336":><i class="fa fa-phone" aria-hidden="true"></i> 04 2402 0205</h2>
+</div>
+<nav class="navbar navbar-inverse navbar-toggleable-md" style="background-color: #333">
+    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
 
-<div id="app">
-    <div class="container-fluid">
-        <div class="card-deck">
-            <div class="card-block">
-                <h4>SSR here</h4>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <h2 class="float-right d-inline mb-0 ml-4 nav-phone hidden-xs-up" style="color: #333":><i class="fa fa-phone" aria-hidden="true"></i> 04 2402 0205</h2>
+        <ul class="navbar-nav mx-auto">
+            <li class="nav-item active">
+                <a class="nav-link" href="#">Home <span class="sr-only"></span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Caravans </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Pop Tops </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Camper Trailers </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Motor Homes </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Boats </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#"></a>
+            </li>
+        </ul>
+        <h2 class="float-right d-inline mb-0 mr-4 nav-phone hidden-xs-up" style="color: #F44336":><i class="fa fa-phone" aria-hidden="true"></i> 04 2402 0205</h2>
+    </div>
+</nav>
+<div class="jumbotron" style="background: url(/img/banner.jpg) no-repeat center center fixed; background-size: cover; background-position-y: -32em; height: 30em;">
+            <p class="lead text-center" style="margin-top: 180px">
+                <a class="btn btn-danger btn-md" href="#browse" role="button">Browse Caravans</a>
+            </p>
+</div>
+<a id="browse" style="display: block; position: relative; top: -115px; visibility: hidden;"></a>
+<div class="container mb-5">
+    <h1 class="text-center mt-5 mb-5" style="color: #333">Browse Caravans</h1>
+    <div class="row">
+        <div class="col-md-4">
+            <div class="card lift-card" style="min-height: 330px; max-height: 330px;">
+                <img class="card-img-top style_prevu_kit" src="/img/caravan.png" alt="Card image cap" style="width: 80%; margin: auto;">
+                <div class="card-block">
+                    <h4 class="card-title">Caravan</h4>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card lift-card" style="min-height: 330px; max-height: 330px;">
+                <img class="card-img-top" src="/img/poptop.png" alt="Card image cap" style="width: 80%; margin: auto;">
+                <div class="card-block">
+                    <h4 class="card-title">Poptop</h4>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card lift-card" style="min-height: 330px; max-height: 330px;">
+                <img class="card-img-top" src="/img/camper-trailer.png" alt="Card image cap" style="width: 70%; margin: auto; margin-top: 2em">
+                <div class="card-block">
+                    <h4 class="card-title">Camper Trailer</h4>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row mt-5">
+        <div class="col-md-4 offset-md-2">
+            <div class="card lift-card" style="min-height: 330px; max-height: 330px;">
+                <img class="card-img-top style_prevu_kit" src="/img/motorhome.png" alt="Card image cap" style="width: 70%; margin: auto; margin-top: 4em">
+                <div class="card-block">
+                    <h4 class="card-title">Motorhome</h4>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card lift-card" style="min-height: 330px; max-height: 330px;">
+                <img class="card-img-top" src="/img/boat.png" alt="Card image cap" style="width: 80%; margin: auto;">
+                <div class="card-block">
+                    <h4 class="card-title">Boat</h4>
+                </div>
             </div>
         </div>
     </div>
 </div>
+<div class="container-fluid" style="background-color: #333; color: white">
+    <div class="row" style="margin: 0; margin-left: 2em">
+        <div class="col-md-4">
+            <iframe src="https://snazzymaps.com/embed/4061" width="100%" height="400px" style="border:none; margin-bottom: -.4em;"></iframe>
+        </div>
+        <div class="col-md-7 ml-5">
+            <h2 class="mt-5" style="font-weight: 100;"><i class="fa fa-map-marker" aria-hidden="true"></i> 464 Ingham Rd Townsville 4814</h2>
+            <h2 style="color: #F44336":><i class="fa fa-phone" aria-hidden="true"></i> 04 2402 0205</h2>
+            <h2 class="mb-5" style="font-weight: 100;"><i class="fa fa-envelope-o" aria-hidden="true"></i> enquiries@australiancaravanstownsville.com</h2>
+            <p class="mt-5" style="color: darkgray">Australian Caravans Townsville © 2017</p>
+        </div>
+    </div>
+</div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js"></script>
+<script>
+    $(document).ready(function () {
 
-<!-- scripts and styles -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
+        var menu = $('nav');
+        var origOffsetY = menu.offset().top;
 
-<!--<script type="text/javascript">-->
-    <!--var context = "{{servlet-context}}";-->
-<!--</script>-->
-<!--{% script "/js/app.js" %}-->
+        function scroll() {
+            if ($(window).scrollTop() >= origOffsetY) {
+                $('nav').addClass('fixed-top');
+                $('.nav-phone').removeClass('hidden-xs-up');
+            } else {
+                $('nav').removeClass('fixed-top');
+                $('.nav-phone').addClass('hidden-xs-up');
+            }
+        }
+        document.onscroll = scroll;
+    });
+</script>
+{% script "/js/material.js" %}
+{% style "/css/material.css" %}
+{% style "/css/website_custom.css" %}
 </body>
 </html>
 
