@@ -7,7 +7,7 @@
 </head>
 <body>
 <div class="jumbotron jumbotron-fluid p-4" style="background-color: white; color: #333">
-    <h1 class="ml-3 d-inline">Australian Caravans Townsville</h1>
+    <h1 class="ml-3 d-inline"><span style="color: #F44336; font-weight: 600">A</span>ustralian <span style="color: #F44336; font-weight: 600">C</span>aravans <span style="color: #F44336; font-weight: 600">T</span>ownsville</h1>
     <h2 class="float-right d-inline mr-3" style="color: #F44336":><i class="fa fa-phone" aria-hidden="true"></i> 04 2402 0205</h2>
 </div>
 <nav class="navbar navbar-inverse navbar-toggleable-md" style="background-color: #333">
@@ -16,9 +16,13 @@
     </button>
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <h2 class="float-right d-inline mb-0 ml-4 nav-phone hidden-xs-up" style="color: #333":><i class="fa fa-phone" aria-hidden="true"></i> 04 2402 0205</h2>
         <ul class="navbar-nav mx-auto">
             <li class="nav-item active">
-                <a class="nav-link" href="#">Caravans <span class="sr-only">(current)</span></a>
+                <a class="nav-link" href="#">Home <span class="sr-only"></span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Caravans </a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="#">Pop Tops </a>
@@ -36,13 +40,15 @@
                 <a class="nav-link" href="#"></a>
             </li>
         </ul>
+        <h2 class="float-right d-inline mb-0 mr-4 nav-phone hidden-xs-up" style="color: #F44336":><i class="fa fa-phone" aria-hidden="true"></i> 04 2402 0205</h2>
     </div>
 </nav>
 <div class="jumbotron" style="background: url(/img/banner.jpg) no-repeat center center fixed; background-size: cover; background-position-y: -32em; height: 30em;">
             <p class="lead text-center" style="margin-top: 180px">
-                <a class="btn btn-danger btn-md" href="#" role="button">Browse Caravans</a>
+                <a class="btn btn-danger btn-md" href="#browse" role="button">Browse Caravans</a>
             </p>
 </div>
+<a id="browse" style="display: block; position: relative; top: -115px; visibility: hidden;"></a>
 <div class="container mb-5">
     <h1 class="text-center mt-5 mb-5" style="color: #333">Browse Caravans</h1>
     <div class="row">
@@ -104,6 +110,24 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js"></script>
+<script>
+    $(document).ready(function () {
+
+        var menu = $('nav');
+        var origOffsetY = menu.offset().top;
+
+        function scroll() {
+            if ($(window).scrollTop() >= origOffsetY) {
+                $('nav').addClass('fixed-top');
+                $('.nav-phone').removeClass('hidden-xs-up');
+            } else {
+                $('nav').removeClass('fixed-top');
+                $('.nav-phone').addClass('hidden-xs-up');
+            }
+        }
+        document.onscroll = scroll;
+    });
+</script>
 {% script "/js/material.js" %}
 {% style "/css/material.css" %}
 {% style "/css/website_custom.css" %}
