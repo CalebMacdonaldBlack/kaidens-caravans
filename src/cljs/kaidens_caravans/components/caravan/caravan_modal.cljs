@@ -31,6 +31,36 @@
                                     :on-change #(swap! ratom assoc key (.-target.value %))
                                     :value     (key @ratom)}]])
 
+(defn- image-text-form-input [key ratom index]
+   [:div.col-9>input.form-control {:type      "text"
+                                   :on-change #(swap! ratom assoc-in [key index :description (.-target.value %)])}])
+                                   ;:value     (get-in @ratom keys)}])
+
+(defn- image-input [key ratom index]
+   [:div.col-9>input.form-control {:type "file"
+                                   :on-change (fn [e]
+                                                (let [file (first (array-seq (.. e -target -files)))
+                                                      file-reader (js/FileReader.)]
+                                                  (set! (.-onload file-reader)
+                                                        (fn [e]
+                                                          (swap! ratom assoc-in [key index :base64] (-> e .-target .-result))
+                                                          (swap! ratom assoc-in [key index :filename] (.-name file))))
+                                                  (.readAsDataURL file-reader file)))}])
+
+(defn- image-uploads [ratom key images]
+  [:div
+    (for [image images]
+      (let [index (.indexOf (to-array images) image)]
+        ^{:key (str "image-" index)}
+        [:div
+         [:h4 "Images"]
+         [:div.row.form-group
+          [:div.col-3.col-form-label "Image File"]
+          [image-input key ratom index]
+          [:div.col-3.col-form-label "Description"]
+          [image-text-form-input key ratom index]]]))
+    [:button.btn.btn-success {:on-click #(swap! ratom update key conj {})} "Add Image"]])
+
 (defn form-select [name key options ratom coerce]
   [:div.form-group.row
    [:label.col-3.col-form-label name]
@@ -71,7 +101,9 @@
    [form-search-dropdown "Bed" "search-Bed" :bed caravan bed-list "/caravans/bed"]
    [form-search-dropdown "Fridge" "search-fridge" :fridge caravan fridge-list "/caravans/fridge"]
    [form-search-dropdown "Suspension" "search-suspension" :suspension caravan suspension-list "/caravans/suspension"]
-   [form-input "price" :price "number" caravan]])
+   [form-input "price" :price "number" caravan]
+   [:hr]
+   [image-uploads caravan :photos (:photos @caravan)]])
 
 (defn caravan-modal [caravan]
   (let [new? (:id @caravan)

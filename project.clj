@@ -5,6 +5,7 @@
 
   :dependencies [[com.cemerick/piggieback "0.2.1"]
                  [org.clojure/tools.nrepl "0.2.10"]
+                 [com.cloudinary/cloudinary-http44 "1.14.0"]
                  [amazonica "0.3.95"]
                  [buddy "1.3.0"]
                  [cljs-ajax "0.5.8" :exclusions [com.fasterxml.jackson.core/jackson-core]]
