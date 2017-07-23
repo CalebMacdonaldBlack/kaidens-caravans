@@ -2,7 +2,9 @@
   (:require [clojure.java.io :as io]
             [kaidens-caravans.config :refer [env]]
             [amazonica.aws.s3 :as s3]
-            [ring.util.http-response :as response]))
+            [ring.util.http-response :as response]
+            [kaidens-caravans.db.core :refer :all]
+            [clojure.string :as string]))
 
 (defn- s3-put
   [stream bytes content-type file-name]
@@ -21,8 +23,8 @@
     (s3-put s b content-type file-name)))
 
 (defn- upload-layout
-  [template-name new-name]
-  (let [bytes (.getBytes (.toString (kaidens-caravans.layout/render-html template-name)) "UTF-8")
+  [template-name new-name params]
+  (let [bytes (.getBytes (.toString (kaidens-caravans.layout/render-html template-name params)) "UTF-8")
         stream (java.io.ByteArrayInputStream. bytes)]
     (s3-put stream (count bytes) "text/html" new-name)))
 
@@ -36,9 +38,13 @@
 (defn upload! []
   (doseq [file files]
     (upload-page (first file) (second file)))
-  (upload-layout "caravan.html" "caravan.html")
-  (upload-layout "single_caravan.html" "single_caravan.html")
-  (upload-layout "homepage.html" "index.html")
+  ;(let [caravans ])
+  (clojure.pprint/pprint {:stock (map (fn [m] (vector (first m) (second m))) (group-by :type (retrieve-caravans)))})
+  (upload-layout "stock.html" "stock.html" {:stock (map (fn [m] (vector (first m) (second m))) (group-by :type (retrieve-caravans)))})
+
+  (upload-layout "caravan.html" "caravan.html" {})
+  (upload-layout "single_caravan.html" "single_caravan.html" {})
+  (upload-layout "homepage.html" "index.html" {})
   (response/ok "DONE"))
   ;(upload-page (slurp "resources/public/css/custom.css") "css/custom.css" "text/css")
   ;(upload-page (slurp "resources/public/css/material.css") "css/material.css" "text/css")
