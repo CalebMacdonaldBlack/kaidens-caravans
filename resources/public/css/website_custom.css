@@ -15,3 +15,26 @@
 .carousel-caption {
     text-shadow: 1px 1px 1px black;
 }
+
+th, td {
+    padding: .7em !important;
+    height: 0 !important;
+}
+
+tr {
+    padding: 0 !important;
+}
+
+th  {
+    width: 10em;
+}
+
+.carousel-control-next, .carousel-control-prev{
+    opacity: 1 !important;
+    background-color: #333;
+}
+
+.carousel-control-next:hover, .carousel-control-prev:hover{
+    opacity: 1 !important;
+    background-color: #222;
+}

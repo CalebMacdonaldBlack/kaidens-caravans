@@ -11,6 +11,7 @@
 (defapi my-routes
   (GET "/" [] (layout/render "homepage.html"))
   (GET "/caravan" [] (layout/render "caravan.html"))
+  (GET "/single-caravan" [] (layout/render "single_caravan.html"))
 
   (context "/manager" []
     (GET "/" [] (layout/render "manager.html")))
