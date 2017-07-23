@@ -1,6 +1,7 @@
 (ns kaidens-caravans.routes.core
   (:require [kaidens-caravans.layout :as layout]
             [kaidens-caravans.business-layer.caravans :as caravans]
+            [kaidens-caravans.business-layer.cms :as cms]
             [hiccup.core :refer [html]]
             [compojure.api.sweet :refer [defapi context GET POST PUT DELETE]]
             [ring.util.http-response :refer [content-type ok]]
@@ -15,6 +16,8 @@
 
   (context "/manager" []
     (GET "/" [] (layout/render "manager.html")))
+
+  (POST "/cms" [] (cms/upload!))
 
   (context "/caravans" []
     (POST "/" {:as request} (caravans/create! request))

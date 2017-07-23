@@ -20,6 +20,15 @@
           :servlet-context *app-context*)))
     "text/html; charset=utf-8"))
 
+(defn render-html
+  [template & [params]]
+  (parser/render-file
+    template
+    (assoc params
+      :page template
+      :servlet-context *app-context*)))
+
+
 (defn error-page
   "error-details should be a map containing the following keys:
    :status - error status
