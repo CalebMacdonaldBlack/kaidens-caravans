@@ -7,11 +7,11 @@
     transition: .5s;
 }
 
-h1, h2, h3, h4 {
-    font-weight: 100;
-}
-
 .img-fluid {
     width: 150% !important;
     height: 150% !important;
+}
+
+.carousel-caption {
+    text-shadow: 1px 1px 1px black;
 }
