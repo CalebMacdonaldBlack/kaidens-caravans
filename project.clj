@@ -34,6 +34,7 @@
                  [org.webjars/font-awesome "4.7.0"]
                  [org.webjars/webjars-locator-jboss-vfs "0.1.0"]
                  [re-frame "0.9.2"]
+                 [day8.re-frame/http-fx "0.1.3"]
                  [reagent "0.6.1"]
                  [reagent-utils "0.2.1"]
                  [ring-webjars "0.1.1"]
@@ -41,7 +42,8 @@
                  [ring/ring-core "1.6.0-RC2"]
                  [ring/ring-defaults "0.2.3"]
                  [secretary "1.2.3"]
-                 [selmer "1.10.7"]]
+                 [selmer "1.10.7"]
+                 [venantius/accountant "0.1.7"]]
 
   :min-lein-version "2.0.0"
 

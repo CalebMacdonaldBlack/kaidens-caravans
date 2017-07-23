@@ -38,9 +38,10 @@
 (defn upload! []
   (doseq [file files]
     (upload-page (first file) (second file)))
-  ;(let [caravans ])
-  (clojure.pprint/pprint {:stock (map (fn [m] (vector (first m) (second m))) (group-by :type (retrieve-caravans)))})
-  (upload-layout "stock.html" "stock.html" {:stock (map (fn [m] (vector (first m) (second m))) (group-by :type (retrieve-caravans)))})
+  (let [caravans (retrieve-caravans)]
+    (upload-layout "stock.html" "stock.html" {:stock (map (fn [m] (vector (first m) (second m))) (group-by :type caravans))})
+    (doseq [caravan caravans]
+      (upload-layout "singlestock.html" (str (:id caravan) ".html") caravan)))
 
   (upload-layout "caravan.html" "caravan.html" {})
   (upload-layout "single_caravan.html" "single_caravan.html" {})
