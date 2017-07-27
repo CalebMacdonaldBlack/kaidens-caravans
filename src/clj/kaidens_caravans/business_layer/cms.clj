@@ -9,7 +9,7 @@
 
 (defn- s3-put!
   [stream bytes content-type file-name]
-  (s3/put-object {:endpoint (env :aws-region)}
+  (s3/put-object :endpoint (env :aws-region)
                  :bucket-name (env :bucket-name)
                  :key file-name
                  :input-stream stream
