@@ -7,10 +7,11 @@
     transition: .5s;
 }
 
-.img-fluid {
-    width: 150% !important;
-    height: 150% !important;
-}
+/*.img-fluid {*/
+    /*width: 100%; !* or any custom size *!*/
+    /*height: 100%;*/
+    /*object-fit: contain;*/
+/*}*/
 
 .carousel-caption {
     text-shadow: 1px 1px 1px black;

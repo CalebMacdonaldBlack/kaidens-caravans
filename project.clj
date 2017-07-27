@@ -16,6 +16,7 @@
                  [cprop "0.1.10"]
                  [funcool/struct "1.0.0"]
                  [hiccup "1.0.5"]
+                 [clojure-humanize "0.2.2"]
                  [luminus-immutant "0.2.3"]
                  [luminus-migrations "0.3.0"]
                  [luminus-nrepl "0.1.4"]

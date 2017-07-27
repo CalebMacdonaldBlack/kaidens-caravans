@@ -14,5 +14,3 @@
     (jumbotron/view)
     (categories/view)
     (footer/view)))
-
-

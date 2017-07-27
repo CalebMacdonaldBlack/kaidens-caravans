@@ -3,6 +3,7 @@
             [kaidens-caravans.business-layer.caravans :as caravans]
             [kaidens-caravans.business-layer.cms :as cms]
             [kaidens-caravans.views.home-page :as home-page]
+            [kaidens-caravans.views.stock-listing-page :as stock-listing-page]
             [hiccup.core :refer [html]]
             [compojure.api.sweet :refer [defapi context GET POST PUT DELETE]]
             [ring.util.http-response :refer [content-type ok]]
@@ -12,7 +13,7 @@
 
 (defapi my-routes
   (GET "/" [] (html (home-page/view)))
-  (GET "/caravan" [] (layout/render "caravan.html"))
+  (GET "/Caravans" [] (html (stock-listing-page/view)))
   (GET "/single-caravan" [] (layout/render "single_caravan.html"))
 
   (context "/manager" []
