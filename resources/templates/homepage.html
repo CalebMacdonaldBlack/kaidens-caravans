@@ -112,24 +112,7 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js"></script>
-<script>
-    $(document).ready(function () {
-
-        var menu = $('nav');
-        var origOffsetY = menu.offset().top;
-
-        function scroll() {
-            if ($(window).scrollTop() >= origOffsetY) {
-                $('nav').addClass('fixed-top');
-                $('.nav-phone').removeClass('hidden-xs-up');
-            } else {
-                $('nav').removeClass('fixed-top');
-                $('.nav-phone').addClass('hidden-xs-up');
-            }
-        }
-        document.onscroll = scroll;
-    });
-</script>
+<script src="/js/website_custom.js"></script>
 {% script "/js/material.js" %}
 {% style "/css/material.css" %}
 {% style "/css/website_custom.css" %}

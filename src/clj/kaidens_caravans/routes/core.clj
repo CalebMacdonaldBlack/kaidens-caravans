@@ -2,6 +2,7 @@
   (:require [kaidens-caravans.layout :as layout]
             [kaidens-caravans.business-layer.caravans :as caravans]
             [kaidens-caravans.business-layer.cms :as cms]
+            [kaidens-caravans.views.home-page :as home-page]
             [hiccup.core :refer [html]]
             [compojure.api.sweet :refer [defapi context GET POST PUT DELETE]]
             [ring.util.http-response :refer [content-type ok]]
@@ -10,7 +11,7 @@
 (declare ^:dynamic *app-context*)
 
 (defapi my-routes
-  (GET "/" [] (layout/render "homepage.html"))
+  (GET "/" [] (html (home-page/view)))
   (GET "/caravan" [] (layout/render "caravan.html"))
   (GET "/single-caravan" [] (layout/render "single_caravan.html"))
 
