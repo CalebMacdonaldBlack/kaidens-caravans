@@ -32,8 +32,6 @@
 
 (defn update!
   [{:keys [body-params route-params]}]
-  (clojure.pprint/pprint body-params)
-  (clojure.pprint/pprint route-params)
   (response/ok {:rows-affected (update-caravan! (merge default-caravan (assoc body-params :id (:id route-params))))}))
 
 (defn delete!
