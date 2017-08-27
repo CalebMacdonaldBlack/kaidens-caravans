@@ -93,7 +93,10 @@
        [:a {:style {:cursor "pointer"}}
         [:i.fa.fa-trash-o.fa-2x.red-circle-icon]]]]]
    [:div.col-4
-    [:div.card.text-center {:style {:cursor "pointer"}}
+    [:input#image-upload {:type "file" :style {:display "none"}
+                          :on-change #(js/alert "CLICK")}]
+    [:div.card.text-center {:style {:cursor "pointer"}
+                            :on-click #(.trigger (js/jQuery "#image-upload") "click")}
      [:div.card-header {:style {:padding "6em"}}
        [:i.fa.fa-camera.fa-5x]
        [:h2 "Add Image"]]]]])
