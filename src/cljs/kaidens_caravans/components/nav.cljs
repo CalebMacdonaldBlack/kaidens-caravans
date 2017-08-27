@@ -17,4 +17,6 @@
      [:li.nav-item
       [:a.nav-link {:on-click #(accountant/navigate! "#/")} "Home"]]
      [:li.nav-item
-      [:a.nav-link {:on-click #(accountant/navigate! "#/caravans")} "Caravans"]]]]])
+      [:a.nav-link {:on-click #(accountant/navigate! "#/caravans")} "Caravans"]]
+     [:li.nav-item
+      [:a.nav-link {:on-click #(accountant/navigate! "#/new-caravan")} "New Caravan"]]]]])
