@@ -10,7 +10,7 @@
                     (rf/dispatch [:load-caravans])
                     (rf/dispatch [:set-active-page :caravans]))
 
-(defn caravans-page []
+(defn page []
   (let [caravan @(rf/subscribe [:current-caravan])
         new-caravan-toggle (r/atom false)]
     [:div.container-fluid.row.mt-5
