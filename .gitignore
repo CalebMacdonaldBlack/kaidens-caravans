@@ -33,3 +33,4 @@ package-lock.json
 out/
 .idea/dictionaries/calebmacdonaldblack.xml
 env.list
+.DS_Store

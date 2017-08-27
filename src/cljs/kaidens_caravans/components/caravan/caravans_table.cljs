@@ -1,4 +1,4 @@
-(ns kaidens-caravans.components.caravan.caravan-table
+(ns kaidens-caravans.components.caravan.caravans-table
   (:require [re-frame.core :as rf]))
 
 (defn- caravan-table-row [{:keys [vin make model type terrain feet tonne year price archived] :as caravan}]

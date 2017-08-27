@@ -1,7 +1,7 @@
-(ns kaidens-caravans.components.caravan.caravans-page
+(ns kaidens-caravans.components.caravan.page
   (:require [re-frame.core :as rf]
             [reagent.core :as r]
-            [kaidens-caravans.components.caravan.caravan-table :refer [caravan-table]]
+            [kaidens-caravans.components.caravan.caravans-table :refer [caravan-table]]
             [kaidens-caravans.components.caravan.caravan-modal :refer [caravan-modal]]
             [ajax.core :refer [GET POST]]
             [secretary.core :as secretary]))
