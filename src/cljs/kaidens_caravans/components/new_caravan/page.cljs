@@ -29,9 +29,11 @@
                                          :aria-expanded "false"}]
    [:i.fa.fa-angle-down.fa-lg.c-input-right {:aria-hidden "true"}]
    [:div.dropdown-menu.c-search-dropdown {:aria-labelledby (str "input-" id)}
-    (for [item (sort-by str @list)]
-      ^{:key (str endpoint item)}
-      [:a.dropdown-item {:on-click #(swap! caravan assoc key item)} item])]])
+    (if (> (count @list) 0)
+      (for [item (sort-by str @list)]
+        ^{:key (str endpoint item)}
+        [:a.dropdown-item {:on-click #(swap! caravan assoc key item)} item])
+      [:a.dropdown-item>em {:style {:color "#999"}} "There are no results."])]])
 
 (defn- form-search-dropdown [name id key caravan list endpoint]
   [:div.col-3.form-group
