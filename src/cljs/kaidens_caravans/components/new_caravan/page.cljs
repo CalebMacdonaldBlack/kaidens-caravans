@@ -83,8 +83,20 @@
 
 (defn- images
   []
-  [:div.row
-   [:div.col-12>h2 "Images"]])
+  [:div.row.mb-5
+   [:div.col-12>h2.mb-5 "Images"]
+   [:div.col-4
+     [:div.card.card-inverse
+      [:img.card-img {:src "http://res.cloudinary.com/lyzppej5b/image/upload/WP_20170705_08_35_58_Pro_dtfk4h.jpg"
+                      :style {:width "100%"}}]
+      [:div.card-img-overlay
+       [:a {:style {:cursor "pointer"}}
+        [:i.fa.fa-trash-o.fa-2x.red-circle-icon]]]]]
+   [:div.col-4
+    [:div.card.text-center {:style {:cursor "pointer"}}
+     [:div.card-header {:style {:padding "6em"}}
+       [:i.fa.fa-camera.fa-5x]
+       [:h2 "Add Image"]]]]])
 
 (defn- modify-caravan-form [caravan]
   (let [new? (:id @caravan)
