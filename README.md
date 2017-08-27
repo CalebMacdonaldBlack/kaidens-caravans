@@ -1,21 +1,10 @@
 # kaidens-caravans
 
-generated using Luminus version "2.9.11.60"
-
-FIXME
-
-## Prerequisites
-
-You will need [Leiningen][1] 2.0 or above installed.
-
-[1]: https://github.com/technomancy/leiningen
-
-## Running
-
-To start a web server for the application, run:
-
-    lein run
-
-## License
-
-Copyright © 2017 FIXME
+## Environment Variables:
+export DATABASE_USER=user
+export DATABASE_PASSWORD=password
+export DATABASE_URL="jdbc:postgresql://url.com/dbname?user=user&password=password"
+export AWS_ACCESS_KEY_ID=XXXXXXXXXXXXXXXX
+export AWS_SECRET_ACCESS_KEY=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+export AWS_REGION=ap-southeast-2
+export BUCKET_NAME=bucketname
