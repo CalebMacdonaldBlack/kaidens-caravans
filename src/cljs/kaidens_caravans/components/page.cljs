@@ -1,12 +1,12 @@
 (ns kaidens-caravans.components.page
   (:require [kaidens-caravans.components.nav :refer [nav]]
-            [kaidens-caravans.components.home-page :refer [home-page]]
-            [kaidens-caravans.components.caravan.page :refer [page]]
+            [kaidens-caravans.components.home.page :as home-page]
+            [kaidens-caravans.components.caravan.page :as caravan-page]
             [re-frame.core :as rf]))
 
 (defn pages []
-  {:home #'home-page
-   :caravans #'page})
+  {:home #'home-page/view
+   :caravans #'caravan-page/view})
 
 (defn page-base []
   [:div
